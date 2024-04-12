@@ -1,0 +1,47 @@
+/* Import font similar to iOS system font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Apply the font to the whole body, set titles and button texts to be bold */
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    background-color: #bdbdbd;
+    width: 800px;
+    margin: 0 auto;
+}
+
+
+/* Style all titles to be bold */
+.title, h1, h2 {
+    font-weight: bold;
+}
+
+/* Customize button colors and make the text bold */
+.nes-btn {
+    font-weight: bold; /* Make button text bold */
+    border-color: transparent !important; /* Remove NES.css borders */
+}
+
+.nes-btn.is-primary {
+    background-color: #ffc400; /*  */
+}
+
+.nes-btn:nth-of-type(2) {
+    background-color: #a2e800; /*  */
+}
+
+.nes-btn:nth-of-type(3) {
+    background-color: #273587; /*  */
+}
+
+.nes-btn:nth-of-type(4) {
+    background-color: #0056a6; /*  */
+}
+
+/* Adjust footer style */
+footer {
+    background-color: #ecf0f1;
+    color: #333;
+    text-align: center;
+    padding: 10px 0;
+}

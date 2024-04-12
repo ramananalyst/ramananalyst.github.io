@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raman Prasad</title>
+    <link rel="stylesheet" href="https://unpkg.com/nes.css/css/nes.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="nes-container with-title is-centered">
+            <p class="title">Projects Overview</p>
+            <div style="text-align: center;">
+                <a href="index.html" class="nes-btn is-primary">Home</a>
+                <a href="projects.html" class="nes-btn is-primary">Projects</a>
+                <a href="https://github.com/ramananalyst" target="_blank" class="nes-btn is-primary">GitHub</a>
+                <a href="https://linkedin.com/in/ramanprasad" target="_blank" class="nes-btn is-primary">LinkedIn</a>
+            </div>
+        </nav>
+    </header>
+    <main class="nes-container with-title">
+        <h1 class="title">Projects</h1>
+        <ul>
+            <li>
+                <a href="inventory_management.html">Inventory Management System</a> - Manage inventory for a small business.
+                <div class="nes-container is-dark">
+                    <p>Technologies: Java, SQL, Spring Boot</p>
+                    <pre><code>public class Inventory {
+  private Map&lt;String, Integer&gt; stock;
+  public Inventory() {
+    stock = new HashMap&lt;&gt;();
+  }
+  public void updateStock(String item, int quantity) {
+    stock.put(item, quantity);
+  }
+}</code></pre>
+                </div>
+            </li>
+            <li>
+                <a href="personal_finance_tracker.html">Personal Finance Tracker</a> - Track personal finances and budget.
+                <div class="nes-container is-dark">
+                    <p>Technologies: Python, Flask, SQLite</p>
+                    <pre><code>class FinanceTracker:
+  def __init__(self):
+    self.budget = {}
+  def add_transaction(self, category, amount):
+    if category in self.budget:
+        self.budget[category] += amount
+    else:
+        self.budget[category] = amount</code></pre>
+                </div>
+            </li>
+            <li>
+                <a href="library_management.html">Library Management System</a> - Manage book lending and returns.
+                <div class="nes-container is-dark">
+                    <p>Technologies: C#, .NET Framework, MySQL</p>
+                    <pre><code>public class LibraryManager {
+  public void CheckoutBook(string bookId, string userId) {
+    // Code to checkout a book
+  }
+  public void ReturnBook(string bookId) {
+    // Code to return a book
+  }
+}</code></pre>
+                </div>
+            </li>
+            <li>
+                <a href="student_record_system.html">Student Record System</a> - Track student details and grades.
+                <div class="nes-container is-dark">
+                    <p>Technologies: PHP, Laravel, PostgreSQL</p>
+                    <pre><code>$student = new Student();
+$student->name = 'John Doe';
+$student->registerCourse('Mathematics');
+$student->recordGrade('Mathematics', 'A');</code></pre>
+                </div>
+            </li>
+            <li>
+                <a href="appointment_scheduler.html">Appointment Scheduler</a> - Manage appointments for various services.
+                <div class="nes-container is-dark">
+                    <p>Technologies: JavaScript, Node.js, MongoDB</p>
+                    <pre><code>app.post('/book-appointment', (req, res) => {
+  const { date, time, service } = req.body;
+  // Book appointment logic
+});</code></pre>
+                </div>
+            </li>
+            <li>
+                <a href="restaurant_reservation.html">Restaurant Reservation System</a> - Manage table reservations.
+                <div class="nes-container is-dark">
+                    <p>Technologies: Ruby on Rails, PostgreSQL</p>
+                    <pre><code>class ReservationsController &lt; ApplicationController
+  def create
+    @reservation = Reservation.new(reservation_params)
+    if @reservation.save
+      redirect_to @reservation
+    else
+      render 'new'
+    end
+  end
+end</code></pre>
+                </div>
+            </li>
+            <li>
+                <a href="task_management.html">Task Management Application</a> - Organize tasks and to-dos.
+                <div class="nes-container is-dark">
+                    <p>Technologies: React, Redux, Firebase</p>
+                    <pre><code>function addTask(task) {
+  return {
+    type: 'ADD_TASK',
+    payload: task
+  };
+}</code></pre>
+                </div>
+            </li>
+        </ul>
+    </main>
+    <footer class="nes-container is-centered">
+        <p>© 2024 Raman Prasad</p>
+    </footer>
+</body>
+</html>
