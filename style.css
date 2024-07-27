@@ -1,86 +1,209 @@
-/* Use system font stack to mimic Apple's San Francisco */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raman Prasad - Project Demos</title>
+    <link rel="stylesheet" href="https://unpkg.com/nes.css/css/nes.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="nes-container with-title is-centered">
+            <p class="title">Projects Overview</p>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="https://github.com/ramananalyst" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/ramanprasad" target="_blank">LinkedIn</a>
+            </div>
+        </nav>
+    </header>
+    <main class="nes-container with-title">
+        <h1 class="title">Project Demos</h1>
+        <section>
+            <h2>Inventory Management System</h2>
+            <p>Manage inventory for a small business. Input the item name and quantity to update the inventory.</p>
+            <form id="inventory-form" class="nes-container is-dark">
+                <label for="item">Item Name:</label>
+                <input type="text" id="item" name="item" class="nes-input" required>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" class="nes-input" required>
+                <button type="submit" class="nes-btn is-primary">Update Stock</button>
+            </form>
+            <div id="inventory-output" class="nes-container is-dark" style="margin-top: 20px;">
+                <p>Updated Inventory:</p>
+                <pre><code id="inventory-result"></code></pre>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Personal Finance Tracker</h2>
+            <p>Track personal finances and budget. Input a category and amount to add a transaction.</p>
+            <form id="finance-form" class="nes-container is-dark">
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category" class="nes-input" required>
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" class="nes-input" required>
+                <button type="submit" class="nes-btn is-primary">Add Transaction</button>
+            </form>
+            <div id="finance-output" class="nes-container is-dark" style="margin-top: 20px;">
+                <p>Updated Budget:</p>
+                <pre><code id="finance-result"></code></pre>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Library Management System</h2>
+            <p>Manage book lending and returns. Input a book ID and user ID to checkout or return a book.</p>
+            <form id="library-form" class="nes-container is-dark">
+                <label for="book-id">Book ID:</label>
+                <input type="text" id="book-id" name="book-id" class="nes-input" required>
+                <label for="user-id">User ID:</label>
+                <input type="text" id="user-id" name="user-id" class="nes-input" required>
+                <button type="submit" class="nes-btn is-primary">Checkout Book</button>
+                <button type="button" id="return-book" class="nes-btn is-warning">Return Book</button>
+            </form>
+            <div id="library-output" class="nes-container is-dark" style="margin-top: 20px;">
+                <p>Library Actions:</p>
+                <pre><code id="library-result"></code></pre>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Student Record System</h2>
+            <p>Track student details and grades. Input student name, course, and grade to record details.</p>
+            <form id="student-form" class="nes-container is-dark">
+                <label for="student-name">Student Name:</label>
+                <input type="text" id="student-name" name="student-name" class="nes-input" required>
+                <label for="course">Course:</label>
+                <input type="text" id="course" name="course" class="nes-input" required>
+                <label for="grade">Grade:</label>
+                <input type="text" id="grade" name="grade" class="nes-input" required>
+                <button type="submit" class="nes-btn is-primary">Record Grade</button>
+            </form>
+            <div id="student-output" class="nes-container is-dark" style="margin-top: 20px;">
+                <p>Student Records:</p>
+                <pre><code id="student-result"></code></pre>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Appointment Scheduler</h2>
+            <p>Manage appointments for various services. Input date, time, and service to book an appointment.</p>
+            <form id="appointment-form" class="nes-container is-dark">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" class="nes-input" required>
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" class="nes-input" required>
+                <label for="service">Service:</label>
+                <input type="text" id="service" name="service" class="nes-input" required>
+                <button type="submit" class="nes-btn is-primary">Book Appointment</button>
+            </form>
+            <div id="appointment-output" class="nes-container is-dark" style="margin-top: 20px;">
+                <p>Appointment Details:</p>
+                <pre><code id="appointment-result"></code></pre>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Restaurant Reservation System</h2>
+            <p>Manage table reservations. Input customer name, date, and time to book a reservation.</p>
+            <form id="reservation-form" class="nes-container is-dark">
+                <label for="customer-name">Customer Name:</label>
+                <input type="text" id="customer-name" name="customer-name" class="nes-input" required>
+                <label for="reservation-date">Date:</label>
+                <input type="date" id="reservation-date" name="reservation-date" class="nes-input" required>
+                <label for="reservation-time">Time:</label>
+                <input type="time" id="reservation-time" name="reservation-time" class="nes-input" required>
+                <button type="submit" class="nes-btn is-primary">Book Reservation</button>
+            </form>
+            <div id="reservation-output" class="nes-container is-dark" style="margin-top: 20px;">
+                <p>Reservation Details:</p>
+                <pre><code id="reservation-result"></code></pre>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Task Management Application</h2>
+            <p>Organize tasks and to-dos. Input task details to add a new task.</p>
+            <form id="task-form" class="nes-container is-dark">
+                <label for="task">Task:</label>
+                <input type="text" id="task" name="task" class="nes-input" required>
+                <button type="submit" class="nes-btn is-primary">Add Task</button>
+            </form>
+            <div id="task-output" class="nes-container is-dark" style="margin-top: 20px;">
+                <p>Task List:</p>
+                <pre><code id="task-result"></code></pre>
+            </div>
+        </section>
+    </main>
+    <footer class="nes-container is-centered">
+        <p>© 2024 Raman Prasad</p>
+    </footer>
+    <script>
+        // Inventory Management System
+        document.getElementById('inventory-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const item = document.getElementById('item').value;
+            const quantity = document.getElementById('quantity').value;
+            document.getElementById('inventory-result').innerText = `${item}: ${quantity}`;
+        });
 
-/* Style all titles to be bold and add some refined colors */
-.title, h1, h2 {
-    font-weight: bold;
-    color: #007acc;
-}
+        // Personal Finance Tracker
+        document.getElementById('finance-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const category = document.getElementById('category').value;
+            const amount = document.getElementById('amount').value;
+            document.getElementById('finance-result').innerText = `${category}: ${amount}`;
+        });
 
-/* Customize button colors to match a professional palette and differentiate them */
-.nav-links a {
-    font-weight: bold; /* Make button text bold */
-    margin: 5px; /* Add some space between buttons */
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    color: #fff;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-}
+        // Library Management System
+        document.getElementById('library-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const bookId = document.getElementById('book-id').value;
+            const userId = document.getElementById('user-id').value;
+                   document.getElementById('library-result').innerText = `Book ${bookId} checked out by User ${userId}`;
+    });
+    document.getElementById('return-book').addEventListener('click', function() {
+        const bookId = document.getElementById('book-id').value;
+        document.getElementById('library-result').innerText = `Book ${bookId} returned`;
+    });
 
-.nav-links a:nth-of-type(1) {
-    background-color: #007acc; /* Professional blue */
-}
+    // Student Record System
+    document.getElementById('student-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const studentName = document.getElementById('student-name').value;
+        const course = document.getElementById('course').value;
+        const grade = document.getElementById('grade').value;
+        document.getElementById('student-result').innerText = `${studentName} - ${course}: ${grade}`;
+    });
 
-.nav-links a:nth-of-type(2) {
-    background-color: #005bb5; /* Darker blue */
-}
+    // Appointment Scheduler
+    document.getElementById('appointment-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+        const service = document.getElementById('service').value;
+        document.getElementById('appointment-result').innerText = `Appointment booked for ${service} on ${date} at ${time}`;
+    });
 
-.nav-links a:nth-of-type(3) {
-    background-color: #004494; /* Even darker blue */
-}
+    // Restaurant Reservation System
+    document.getElementById('reservation-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const customerName = document.getElementById('customer-name').value;
+        const date = document.getElementById('reservation-date').value;
+        const time = document.getElementById('reservation-time').value;
+        document.getElementById('reservation-result').innerText = `Reservation for ${customerName} on ${date} at ${time}`;
+    });
 
-.nav-links a:nth-of-type(4) {
-    background-color: #002e73; /* Darkest blue */
-}
-
-.nav-links a:hover {
-    opacity: 0.8;
-}
-
-/* Adjust footer style */
-footer {
-    background-color: #007acc;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
-}
-
-/* Style navigation links */
-.nav-links {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-/* Style lists */
-.nes-list.is-circle, .nes-list.is-disc {
-    list-style-position: inside;
-    padding-left: 0;
-    text-align: left; /* Align text to the left for better readability */
-    margin: 0 auto;
-    max-width: 800px;
-}
-
-.nes-list.is-circle li, .nes-list.is-disc li {
-    margin-bottom: 5px;
-}
-
-/* Style section padding and background colors */
-section {
-    margin-bottom: 20px;
-    background-color: #e0e0e0;
-    padding: 20px;
-    border-radius: 10px;
-}
+    // Task Management Application
+    document.getElementById('task-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const task = document.getElementById('task').value;
+        document.getElementById('task-result').innerText += `Task: ${task}\n`;
+    });
+</script>
+   </body>
+</html>
+```
