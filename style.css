@@ -1,47 +1,86 @@
-/* Import font similar to iOS system font */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-/* Apply the font to the whole body, set titles and button texts to be bold */
+/* Use system font stack to mimic Apple's San Francisco */
 body {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    background-color: #bdbdbd;
-    width: 800px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    max-width: 1000px;
     margin: 0 auto;
+    padding: 20px;
+    text-align: center;
 }
 
-
-/* Style all titles to be bold */
+/* Style all titles to be bold and add some refined colors */
 .title, h1, h2 {
     font-weight: bold;
+    color: #007acc;
 }
 
-/* Customize button colors and make the text bold */
-.nes-btn {
+/* Customize button colors to match a professional palette and differentiate them */
+.nav-links a {
     font-weight: bold; /* Make button text bold */
-    border-color: transparent !important; /* Remove NES.css borders */
+    margin: 5px; /* Add some space between buttons */
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    transition: background-color 0.3s ease;
 }
 
-.nes-btn.is-primary {
-    background-color: #ffc400; /*  */
+.nav-links a:nth-of-type(1) {
+    background-color: #007acc; /* Professional blue */
 }
 
-.nes-btn:nth-of-type(2) {
-    background-color: #a2e800; /*  */
+.nav-links a:nth-of-type(2) {
+    background-color: #005bb5; /* Darker blue */
 }
 
-.nes-btn:nth-of-type(3) {
-    background-color: #273587; /*  */
+.nav-links a:nth-of-type(3) {
+    background-color: #004494; /* Even darker blue */
 }
 
-.nes-btn:nth-of-type(4) {
-    background-color: #0056a6; /*  */
+.nav-links a:nth-of-type(4) {
+    background-color: #002e73; /* Darkest blue */
+}
+
+.nav-links a:hover {
+    opacity: 0.8;
 }
 
 /* Adjust footer style */
 footer {
-    background-color: #ecf0f1;
-    color: #333;
+    background-color: #007acc;
+    color: #ffffff;
     text-align: center;
     padding: 10px 0;
+    margin-top: 20px;
+}
+
+/* Style navigation links */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Style lists */
+.nes-list.is-circle, .nes-list.is-disc {
+    list-style-position: inside;
+    padding-left: 0;
+    text-align: left; /* Align text to the left for better readability */
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.nes-list.is-circle li, .nes-list.is-disc li {
+    margin-bottom: 5px;
+}
+
+/* Style section padding and background colors */
+section {
+    margin-bottom: 20px;
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
 }
