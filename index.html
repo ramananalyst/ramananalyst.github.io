@@ -275,7 +275,6 @@
       <button onclick="showPage('skills')"><i class="fas fa-code"></i> Skills</button>
       <button onclick="showPage('experience')"><i class="fas fa-briefcase"></i> Experience</button>
       <button onclick="showPage('projects')"><i class="fas fa-project-diagram"></i> Projects</button>
-      <button onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contact</button>
       <button onclick="openModal()" class="resume"><i class="fas fa-download"></i> Resume</button>
     </nav>
 
@@ -299,7 +298,7 @@
         <a href="https://github.com/ramanprasadeth" class="nes-btn github"><i class="fab fa-github"></i> GitHub</a>
         <a href="https://linkedin.com/in/ramanprasadeth" class="nes-btn linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="https://twitter.com/ramanprasadeth" class="nes-btn twitter"><i class="fab fa-x-twitter"></i> X</a>
-        <a href="mailto:raman@raman.page" class="nes-btn email"><i class="fas fa-envelope"></i> Email</a>
+        <a href="mailto:hey@raman.page" class="nes-btn email"><i class="fas fa-envelope"></i> Email</a>
       </div>
     </div>
 
@@ -341,18 +340,6 @@
       </div>
     </div>
 
-    <div id="contact" class="page nes-container">
-      <h2>Get in Touch</h2>
-      <form static-form static-form-id="contacts" class="contact-form" id="contactForm">
-        <input type="text" name="name" id="name" placeholder="Your Name" required>
-        <input type="email" name="email" id="email" placeholder="Your Email" required>
-        <textarea name="message" id="message" placeholder="Your Message" rows="5" required></textarea>
-        <input type="text" name="_honey" style="display: none;">
-        <button type="submit" class="nes-btn email"><i class="fas fa-paper-plane"></i> Send Message</button>
-      </form>
-      <p id="formMessage" style="display: none; margin-top: 10px;"></p>
-    </div>
-
     <footer>© 2025 raman.page</footer>
   </div>
 
@@ -361,29 +348,6 @@
       document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
       document.getElementById(pageId).classList.add('active');
     }
-
-    // Contact form submission
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const form = e.target;
-      const formMessage = document.getElementById('formMessage');
-      const formData = new FormData(form);
-
-      // Check honeypot field
-      if (formData.get('_honey') !== '') {
-        formMessage.style.display = 'block';
-        formMessage.style.color = '#dc3545';
-        formMessage.textContent = 'Error: Invalid submission.';
-        return;
-      }
-
-      // Assume Static.app handles submission automatically
-      formMessage.style.display = 'block';
-      formMessage.style.color = '#2ecc71';
-      formMessage.textContent = 'Message sent successfully!';
-      form.reset();
-    });
 
     // Modal handling
     function openModal() {
