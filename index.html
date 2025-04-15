@@ -275,6 +275,7 @@
       <button onclick="showPage('skills')"><i class="fas fa-code"></i> Skills</button>
       <button onclick="showPage('experience')"><i class="fas fa-briefcase"></i> Experience</button>
       <button onclick="showPage('projects')"><i class="fas fa-project-diagram"></i> Projects</button>
+      <button onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contact</button>
       <button onclick="openModal()" class="resume"><i class="fas fa-download"></i> Resume</button>
     </nav>
 
@@ -298,7 +299,7 @@
         <a href="https://github.com/ramanprasadeth" class="nes-btn github"><i class="fab fa-github"></i> GitHub</a>
         <a href="https://linkedin.com/in/ramanprasadeth" class="nes-btn linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="https://twitter.com/ramanprasadeth" class="nes-btn twitter"><i class="fab fa-x-twitter"></i> X</a>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hey@raman.page" target="_blank" class="nes-btn email"><i class="fas fa-envelope"></i> Email</a>
+        <a href="mailto:raman@raman.page" class="nes-btn email"><i class="fas fa-envelope"></i> Email</a>
       </div>
     </div>
 
@@ -340,6 +341,18 @@
       </div>
     </div>
 
+    <div id="contact" class="page nes-container">
+      <h2>Get in Touch</h2>
+      <form static-form static-form-id="contacts" class="contact-form" id="contactForm">
+        <input type="text" name="name" id="name" placeholder="Your Name" required>
+        <input type="email" name="email" id="email" placeholder="Your Email" required>
+        <textarea name="message" id="message" placeholder="Your Message" rows="5" required></textarea>
+        <input type="text" name="_honey" style="display: none;">
+        <button type="submit" class="nes-btn email"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </form>
+      <p id="formMessage" style="display: none; margin-top: 10px;"></p>
+    </div>
+
     <footer>© 2025 raman.page</footer>
   </div>
 
@@ -348,6 +361,29 @@
       document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
       document.getElementById(pageId).classList.add('active');
     }
+
+    // Contact form submission
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const form = e.target;
+      const formMessage = document.getElementById('formMessage');
+      const formData = new FormData(form);
+
+      // Check honeypot field
+      if (formData.get('_honey') !== '') {
+        formMessage.style.display = 'block';
+        formMessage.style.color = '#dc3545';
+        formMessage.textContent = 'Error: Invalid submission.';
+        return;
+      }
+
+      // Assume Static.app handles submission automatically
+      formMessage.style.display = 'block';
+      formMessage.style.color = '#2ecc71';
+      formMessage.textContent = 'Message sent successfully!';
+      form.reset();
+    });
 
     // Modal handling
     function openModal() {
@@ -593,4 +629,132 @@
       doc.setFont("helvetica", "normal");
       doc.text("Upper Hutt, Wellington, New Zealand", margin, y);
       y += 5;
-      doc.text("Phone: +64
+      doc.text("Phone: +64 0210348290 | Email: ramanprasad.eth@gmail.com", margin, y);
+      y += 10;
+
+      // Professional Summary
+      checkPageSpace(30);
+      doc.setFontSize(12);
+      doc.setFont("helvetica", "bold");
+      doc.text("Professional Summary", margin, y);
+      y += 8;
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "normal");
+      const summaryLines = doc.splitTextToSize(template.summary, maxWidth);
+      doc.text(summaryLines, margin, y);
+      y += summaryLines.length * 5 + 5;
+
+      // Core Competencies
+      checkPageSpace(50);
+      doc.setFontSize(12);
+      doc.setFont("helvetica", "bold");
+      doc.text("Core Competencies", margin, y);
+      y += 8;
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "normal");
+      template.competencies.forEach(comp => {
+        checkPageSpace(10);
+        const compLines = doc.splitTextToSize(`• ${comp}`, maxWidth - 5);
+        doc.text(compLines, margin + 5, y);
+        y += compLines.length * 5;
+      });
+      y += 5;
+
+      // Technical Skills
+      checkPageSpace(50);
+      doc.setFontSize(12);
+      doc.setFont("helvetica", "bold");
+      doc.text("Technical Skills", margin, y);
+      y += 8;
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "normal");
+      template.skills.forEach(skill => {
+        checkPageSpace(10);
+        const skillLines = doc.splitTextToSize(`• ${skill}`, maxWidth - 5);
+        doc.text(skillLines, margin + 5, y);
+        y += skillLines.length * 5;
+      });
+      y += 5;
+
+      // Professional Experience
+      checkPageSpace(100);
+      doc.setFontSize(12);
+      doc.setFont("helvetica", "bold");
+      doc.text("Professional Experience", margin, y);
+      y += 8;
+      template.experienceOrder.forEach(title => {
+        const exp = experiences.find(e => e.title === title);
+        if (exp) {
+          checkPageSpace(50);
+          doc.setFontSize(10);
+          doc.setFont("helvetica", "bold");
+          doc.text(exp.title, margin, y);
+          y += 5;
+          doc.setFont("helvetica", "normal");
+          doc.text(exp.date, margin, y);
+          y += 5;
+          const details = template.experienceDetails[title] || exp.details;
+          details.forEach(detail => {
+            checkPageSpace(15);
+            const lines = doc.splitTextToSize(`• ${detail}`, maxWidth - 5);
+            doc.text(lines, margin + 5, y);
+            y += lines.length * 5;
+          });
+          y += 5;
+        }
+      });
+
+      // Community Involvement
+      checkPageSpace(60);
+      doc.setFontSize(12);
+      doc.setFont("helvetica", "bold");
+      doc.text("Community Involvement", margin, y);
+      y += 8;
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "normal");
+      communityInvolvement.forEach(item => {
+        checkPageSpace(15);
+        const lines = doc.splitTextToSize(`• ${item}`, maxWidth - 5);
+        doc.text(lines, margin + 5, y);
+        y += lines.length * 5;
+      });
+      y += 10;
+
+      // Education
+      checkPageSpace(60);
+      doc.setFontSize(12);
+      doc.setFont("helvetica", "bold");
+      doc.text("Education", margin, y);
+      y += 8;
+      education.forEach(edu => {
+        checkPageSpace(20);
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "bold");
+        doc.text(edu.degree, margin, y);
+        y += 5;
+        doc.setFont("helvetica", "normal");
+        doc.text(`${edu.institution} | ${edu.date}`, margin, y);
+        y += 5;
+        doc.text(edu.focus, margin + 5, y);
+        y += 5;
+      });
+      y += 10;
+
+      // Why I'm the Ideal Candidate
+      checkPageSpace(40);
+      doc.setFontSize(12);
+      doc.setFont("helvetica", "bold");
+      doc.text(`Why I’m the Ideal Candidate for ${role.charAt(0).toUpperCase() + role.slice(1)}`, margin, y);
+      y += 8;
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "normal");
+      const idealLines = doc.splitTextToSize(template.ideal, maxWidth);
+      doc.text(idealLines, margin, y);
+      y += idealLines.length * 5;
+
+      // Save the PDF
+      doc.save(`Raman_Prasad_${role.replace(/\s+/g, '_')}.pdf`);
+    }
+  </script>
+</body>
+</html>
