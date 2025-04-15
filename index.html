@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>raman.page | Software Engineer</title>
+  <title>raman.page</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-  <!-- Add jsPDF library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     :root {
@@ -42,7 +41,7 @@
     }
 
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       position: relative;
     }
@@ -50,7 +49,6 @@
     .nes-container {
       background: rgba(47, 51, 79, 0.2);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 16px;
       padding: 20px;
@@ -61,13 +59,13 @@
     h1 {
       color: var(--accent);
       text-align: center;
-      font-size: clamp(1.5rem, 5vw, 2rem);
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
       margin-bottom: 20px;
     }
 
     h2 {
       color: var(--accent);
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       margin-bottom: 20px;
     }
 
@@ -86,7 +84,7 @@
       border-radius: 12px;
       padding: 12px 20px;
       color: #fff;
-      font-size: clamp(0.8rem, 2.5vw, 1rem);
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
       font-weight: bold;
       cursor: pointer;
       transition: transform 0.2s, background 0.2s;
@@ -119,12 +117,12 @@
       height: 120px;
       object-fit: cover;
       margin-bottom: 10px;
-      border: 2px solid var(--accent);
+      border: 3px solid var(--accent);
     }
 
     .social-grid, .skills-grid, .projects-grid {
       display: grid;
-      grid-template-columns: repeat 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 12px;
       margin-bottom: 20px;
     }
@@ -136,7 +134,7 @@
       border-radius: 12px;
       color: var(--btn-light-text);
       padding: 12px 16px;
-      font-size: clamp(0.8rem, 2.5vw, 1rem);
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
       font-weight: bold;
       cursor: pointer;
       display: flex;
@@ -156,7 +154,8 @@
     .github { background: rgba(36, 41, 46, 0.8); }
     .linkedin { background: rgba(0, 119, 181, 0.8); }
     .twitter { background: rgba(29, 161, 242, 0.8); }
-    .email { background: rgba(220, 53, 69, 0.8); }
+    .email-gmail { background: rgba(220, 53, 69, 0.8); }
+    .email-apple { background: rgba(100, 100, 100, 0.8); }
     .resume { background: rgba(46, 204, 113, 0.8); }
 
     .experience-item, .project-item {
@@ -168,44 +167,29 @@
 
     .experience-item h3, .project-item h3 {
       color: var(--accent);
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       margin-bottom: 10px;
     }
 
     .experience-item p, .project-item p {
-      font-size: 0.9rem;
-      line-height: 1.4;
+      font-size: 0.95rem;
+      line-height: 1.5;
     }
 
-    .contact-form {
+    .project-item .links {
+      margin-top: 10px;
       display: flex;
-      flex-direction: column;
       gap: 10px;
-    }
-
-    .contact-form input, .contact-form textarea {
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      border-radius: 12px;
-      padding: 12px;
-      color: var(--text);
-      font-family: 'Futura', sans-serif;
-      font-size: 1rem;
-    }
-
-    .contact-form input:focus, .contact-form textarea:focus {
-      outline: none;
-      background: rgba(255, 255, 255, 0.2);
+      flex-wrap: wrap;
     }
 
     footer {
       text-align: center;
       margin-top: 30px;
       color: #b0b0b0;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
 
-    /* Modal Styles */
     .modal {
       display: none;
       position: fixed;
@@ -263,6 +247,10 @@
         padding: 10px 12px;
         font-size: 0.9rem;
       }
+      .profile img {
+        width: 100px;
+        height: 100px;
+      }
     }
   </style>
 </head>
@@ -275,17 +263,16 @@
       <button onclick="showPage('skills')"><i class="fas fa-code"></i> Skills</button>
       <button onclick="showPage('experience')"><i class="fas fa-briefcase"></i> Experience</button>
       <button onclick="showPage('projects')"><i class="fas fa-project-diagram"></i> Projects</button>
-      <button onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contact</button>
       <button onclick="openModal()" class="resume"><i class="fas fa-download"></i> Resume</button>
     </nav>
 
-    <!-- Modal for Role Input -->
     <div id="resumeModal" class="modal">
       <div class="modal-content">
         <h2>Download Resume</h2>
         <p>Enter the tech role you're hiring for:</p>
-        <input type="text" id="roleInput" placeholder="e.g., Data Analyst, Software Developer, Project Manager">
+        <input type="text" id="roleInput" placeholder="e.g., Data Analyst, Software Developer">
         <button onclick="downloadResume()">Generate Resume</button>
+        <button onclick="closeModal()" style="background: #dc3545; margin-top: 10px;">Cancel</button>
       </div>
     </div>
 
@@ -293,13 +280,14 @@
       <div class="profile">
         <img src="https://i.postimg.cc/yx7ZNbPd/1-CF46048-E1-DD-453-E-92-BC-621257-C74524-1-105-c.jpg" alt="Raman's Profile Picture">
         <h2>Raman Prasad</h2>
-        <p>Software Engineer | Full-Stack Developer | Problem Solver</p>
+        <p>Software Engineer | Full-Stack Developer | Data Enthusiast</p>
       </div>
       <div class="social-grid">
         <a href="https://github.com/ramanprasadeth" class="nes-btn github"><i class="fab fa-github"></i> GitHub</a>
         <a href="https://linkedin.com/in/ramanprasadeth" class="nes-btn linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="https://twitter.com/ramanprasadeth" class="nes-btn twitter"><i class="fab fa-x-twitter"></i> X</a>
-        <a href="mailto:raman@raman.page" class="nes-btn email"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hey@raman.page" target="_blank" class="nes-btn email-gmail"><i class="fas fa-envelope"></i> Gmail</a>
+        <a href="mailto:hey@raman.page" class="nes-btn email-apple"><i class="fas fa-envelope"></i> Apple Mail</a>
       </div>
     </div>
 
@@ -314,6 +302,10 @@
         <div class="nes-btn">AWS</div>
         <div class="nes-btn">Docker</div>
         <div class="nes-btn">Git</div>
+        <div class="nes-btn">HTML/CSS</div>
+        <div class="nes-btn">TypeScript</div>
+        <div class="nes-btn">MongoDB</div>
+        <div class="nes-btn">Tableau</div>
       </div>
     </div>
 
@@ -321,13 +313,18 @@
       <h2>Work Experience</h2>
       <div class="experience-item">
         <h3>Social Media Leader & Billing Analyst | Octopus Energy</h3>
-        <p>2023 - Present</p>
-        <p>Spearheaded community engagement initiatives, supporting over 25,000 customers. Developed data-driven strategies using SQL and Power BI, improving satisfaction by 20%.</p>
+        <p>2023 - Present | Wellington, New Zealand</p>
+        <p>Led community engagement for 25,000+ customers, using SQL and Power BI to boost satisfaction by 20%.</p>
       </div>
       <div class="experience-item">
         <h3>Customer Service | Countdown</h3>
-        <p>2019 - 2023</p>
-        <p>Trained a team of 15, improving service delivery by 30% through innovative reporting tools.</p>
+        <p>2019 - 2023 | Upper Hutt, New Zealand</p>
+        <p>Trained 15 team members, improving service delivery by 30% with innovative reporting tools.</p>
+      </div>
+      <div class="experience-item">
+        <h3>Customer Service Lead | Manos Licensed Restaurant</h3>
+        <p>2015 - 2018 | Upper Hutt, New Zealand</p>
+        <p>Streamlined operations and designed an inventory system, enhancing efficiency.</p>
       </div>
     </div>
 
@@ -337,55 +334,64 @@
         <div class="project-item">
           <h3>Community Data Dashboard</h3>
           <p>A Python-based tool using SQL and Tableau to analyze community trends, supporting local initiatives.</p>
+          <div class="links">
+            <a href="https://your-demo-link.com" target="_blank" class="nes-btn">View Demo</a>
+            <a href="https://github.com/ramanprasadeth/community-dashboard" target="_blank" class="nes-btn github">GitHub</a>
+          </div>
+        </div>
+        <div class="project-item">
+          <h3>Flappy Bird Game</h3>
+          <p>A JavaScript-based Flappy Bird clone built with HTML5 Canvas, featuring responsive controls and score tracking.</p>
+          <div class="links">
+            <a href="https://your-demo-link.com/flappy-bird" target="_blank" class="nes-btn">Play Game</a>
+            <a href="https://github.com/ramanprasadeth/flappy-bird" target="_blank" class="nes-btn github">GitHub</a>
+          </div>
+        </div>
+        <div class="project-item">
+          <h3>HTML/CSS Live Editor</h3>
+          <p>A real-time HTML/CSS editor built with React, allowing users to write and preview code instantly.</p>
+          <div class="links">
+            <a href="https://your-demo-link.com/html-editor" target="_blank" class="nes-btn">Try Editor</a>
+            <a href="https://github.com/ramanprasadeth/html-editor" target="_blank" class="nes-btn github">GitHub</a>
+          </div>
+        </div>
+        <div class="project-item">
+          <h3>Chat Bot</h3>
+          <p>An AI-powered chatbot using Node.js and NLP to handle user queries interactively.</p>
+          <div class="links">
+            <a href="https://your-demo-link.com/chatbot" target="_blank" class="nes-btn">Chat Now</a>
+            <a href="https://github.com/ramanprasadeth/chatbot" target="_blank" class="nes-btn github">GitHub</a>
+          </div>
+        </div>
+        <div class="project-item">
+          <h3>Data Visualizer</h3>
+          <p>An interactive tool built with D3.js and Python, displaying complex datasets dynamically.</p>
+          <div class="links">
+            <a href="https://your-demo-link.com/data-visualizer" target="_blank" class="nes-btn">View Visuals</a>
+            <a href="https://github.com/ramanprasadeth/data-visualizer" target="_blank" class="nes-btn github">GitHub</a>
+          </div>
+        </div>
+        <div class="project-item">
+          <h3>Task Manager App</h3>
+          <p>A full-stack app using React, Node.js, and MongoDB, with user authentication and real-time updates.</p>
+          <div class="links">
+            <a href="https://your-demo-link.com/task-manager" target="_blank" class="nes-btn">Try App</a>
+            <a href="https://github.com/ramanprasadeth/task-manager" target="_blank" class="nes-btn github">GitHub</a>
+          </div>
         </div>
       </div>
     </div>
 
-    <div id="contact" class="page nes-container">
-      <h2>Get in Touch</h2>
-      <form static-form static-form-id="contacts" class="contact-form" id="contactForm">
-        <input type="text" name="name" id="name" placeholder="Your Name" required>
-        <input type="email" name="email" id="email" placeholder="Your Email" required>
-        <textarea name="message" id="message" placeholder="Your Message" rows="5" required></textarea>
-        <input type="text" name="_honey" style="display: none;">
-        <button type="submit" class="nes-btn email"><i class="fas fa-paper-plane"></i> Send Message</button>
-      </form>
-      <p id="formMessage" style="display: none; margin-top: 10px;"></p>
-    </div>
-
-    <footer>© 2025 raman.page</footer>
+    <footer>© 2025 raman.page | Built with 💻 by Raman</footer>
   </div>
 
   <script>
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-      document.getElementById(pageId).classList.add('active');
+      const page = document.getElementById(pageId);
+      if (page) page.classList.add('active');
     }
 
-    // Contact form submission
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const form = e.target;
-      const formMessage = document.getElementById('formMessage');
-      const formData = new FormData(form);
-
-      // Check honeypot field
-      if (formData.get('_honey') !== '') {
-        formMessage.style.display = 'block';
-        formMessage.style.color = '#dc3545';
-        formMessage.textContent = 'Error: Invalid submission.';
-        return;
-      }
-
-      // Assume Static.app handles submission automatically
-      formMessage.style.display = 'block';
-      formMessage.style.color = '#2ecc71';
-      formMessage.textContent = 'Message sent successfully!';
-      form.reset();
-    });
-
-    // Modal handling
     function openModal() {
       document.getElementById('resumeModal').style.display = 'flex';
     }
@@ -394,366 +400,41 @@
       document.getElementById('resumeModal').style.display = 'none';
     }
 
-    // Dynamic CV Generation
     function downloadResume() {
-      let role = document.getElementById('roleInput').value.trim();
-      if (!role) role = 'Technology Professional'; // Default if empty
+      let role = document.getElementById('roleInput').value.trim() || 'Technology Professional';
       closeModal();
 
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF({
-        orientation: 'portrait',
-        unit: 'mm',
-        format: 'a4'
-      });
+      try {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({
+          orientation: 'portrait',
+          unit: 'mm',
+          format: 'a4'
+        });
 
-      // Page dimensions
-      const pageHeight = 297;
-      const margin = 20;
-      const maxWidth = 170;
-      let y = margin;
+        const margin = 20;
+        let y = margin;
 
-      // Helper function to check and add new page
-      function checkPageSpace(requiredHeight) {
-        if (y + requiredHeight > pageHeight - margin) {
-          doc.addPage();
-          y = margin;
-        }
-      }
-
-      // CV Data from your real CV
-      const coreCompetencies = [
-        'Community Engagement & Stakeholder Partnerships',
-        'Project Planning & Capacity Building',
-        'Event Coordination & Volunteer Management',
-        'Data Analysis & Reporting (Excel, SQL, Power BI)',
-        'Written, Verbal, & Presentation Skills',
-        'Organizational Development & Process Improvement'
-      ];
-
-      const technicalSkills = [
-        'Community Engagement Platforms: Social Media, Canva',
-        'Data Analysis Tools: Excel, SQL, Power BI, Tableau',
-        'Programming & Web Development: SQL, Python, HTML, CSS',
-        'Project Management: Trello, Asana, Google Workspace'
-      ];
-
-      const experiences = [
-        {
-          title: 'Social Media Leader & Billing Analyst | Octopus Energy, Wellington, New Zealand',
-          date: '2023 – Present',
-          details: [
-            'Spearheaded community engagement initiatives, supporting over 25,000 customers, including business accounts.',
-            'Trained and led a team of 9 staff in delivering customer-first, community-aligned service outcomes.',
-            'Developed data-driven strategies to address community needs, improving customer satisfaction by 20%.',
-            'Collaborated on affordability programs to support vulnerable populations, aligning with community wellness goals.'
-          ]
-        },
-        {
-          title: 'Customer Service | Countdown, Upper Hutt, New Zealand',
-          date: '2019 – 2023',
-          details: [
-            'Trained a team of 15 customer service representatives, driving a culture of collaboration and excellence.',
-            'Improved service delivery by 30% through the implementation of innovative reporting tools.',
-            'Built relationships with local residents, addressing their needs with empathy and responsiveness.'
-          ]
-        },
-        {
-          title: 'Customer Service Lead | Manos Licensed Restaurant, Upper Hutt, New Zealand',
-          date: '2015 – 2018',
-          details: [
-            'Supported local business growth by streamlining customer service operations, contributing to increased patron satisfaction.',
-            'Designed and implemented a simplified inventory management system, enhancing operational efficiency.'
-          ]
-        }
-      ];
-
-      const communityInvolvement = [
-        'Community Support and Social Media Advocate: Actively engaged in local initiatives, supporting vulnerable groups through social media platforms.',
-        'Volunteer Mentor: Assisted youth in Upper Hutt with skill-building and career development workshops.',
-        'Community Listening Groups: Facilitated discussions to identify community needs and develop actionable solutions.'
-      ];
-
-      const education = [
-        {
-          degree: 'Bachelor of Science in Computer Science and Data Science',
-          institution: 'Massey University, New Zealand',
-          date: 'Expected 2026',
-          focus: 'Focus: Data analysis, predictive modeling, and community behavior trends.'
-        },
-        {
-          degree: 'Educational Psychology and Criminology',
-          institution: 'Victoria University of Wellington, New Zealand',
-          date: '2022 – 2023',
-          focus: 'Focus: Behavioral insights and community development strategies.'
-        }
-      ];
-
-      // Role-specific templates
-      const roleTemplates = {
-        'data analyst': {
-          summary: 'Analytical professional with expertise in data analysis and reporting using SQL, Power BI, and Excel, driving impactful community and business outcomes. Experienced in stakeholder engagement and process optimization, with a passion for leveraging data to solve complex problems.',
-          competencies: [
-            'Data Analysis & Reporting (Excel, SQL, Power BI)',
-            'Community Engagement & Stakeholder Partnerships',
-            'Written, Verbal, & Presentation Skills',
-            'Organizational Development & Process Improvement'
-          ],
-          skills: [
-            'Data Analysis Tools: Excel, SQL, Power BI, Tableau',
-            'Programming & Web Development: SQL, Python, HTML, CSS',
-            'Community Engagement Platforms: Social Media, Canva',
-            'Project Management: Trello, Asana, Google Workspace'
-          ],
-          experienceOrder: [
-            'Social Media Leader & Billing Analyst | Octopus Energy, Wellington, New Zealand',
-            'Customer Service | Countdown, Upper Hutt, New Zealand',
-            'Customer Service Lead | Manos Licensed Restaurant, Upper Hutt, New Zealand'
-          ],
-          experienceDetails: {
-            'Social Media Leader & Billing Analyst | Octopus Energy, Wellington, New Zealand': [
-              'Developed data-driven strategies using SQL and Power BI, improving customer satisfaction by 20%.',
-              'Spearheaded community engagement initiatives, analyzing data for over 25,000 customers.',
-              'Trained 9 staff in data reporting tools, enhancing team analytical capabilities.',
-              'Collaborated on affordability programs, using data to support community wellness.'
-            ],
-            'Customer Service | Countdown, Upper Hutt, New Zealand': [
-              'Improved service delivery by 30% through innovative reporting tools.',
-              'Trained a team of 15 in data-driven customer service practices.',
-              'Built relationships with residents, using feedback to inform service improvements.'
-            ],
-            'Customer Service Lead | Manos Licensed Restaurant, Upper Hutt, New Zealand': [
-              'Designed a simplified inventory system, optimizing operational data.',
-              'Streamlined customer service operations, enhancing efficiency.'
-            ]
-          },
-          ideal: `With a strong foundation in data analysis using SQL, Power BI, and Python, I am well-suited for a Data Analyst role. My experience transforming community and customer data into actionable insights, combined with my ability to communicate findings effectively, ensures I can drive value for your organization.`
-        },
-        'software developer': {
-          summary: 'Technologically adept professional with skills in Python, SQL, HTML, and CSS, complemented by a background in data analysis and stakeholder engagement. Experienced in building efficient systems and delivering community-focused solutions, with a commitment to technical excellence.',
-          competencies: [
-            'Data Analysis & Reporting (Excel, SQL, Power BI)',
-            'Project Planning & Capacity Building',
-            'Written, Verbal, & Presentation Skills',
-            'Organizational Development & Process Improvement'
-          ],
-          skills: [
-            'Programming & Web Development: SQL, Python, HTML, CSS',
-            'Data Analysis Tools: Excel, SQL, Power BI, Tableau',
-            'Project Management: Trello, Asana, Google Workspace',
-            'Community Engagement Platforms: Social Media, Canva'
-          ],
-          experienceOrder: [
-            'Social Media Leader & Billing Analyst | Octopus Energy, Wellington, New Zealand',
-            'Customer Service | Countdown, Upper Hutt, New Zealand',
-            'Customer Service Lead | Manos Licensed Restaurant, Upper Hutt, New Zealand'
-          ],
-          experienceDetails: {
-            'Social Media Leader & Billing Analyst | Octopus Energy, Wellington, New Zealand': [
-              'Developed data processing scripts using Python and SQL, improving efficiency by 20%.',
-              'Led community engagement platforms, utilizing HTML/CSS for digital interfaces.',
-              'Trained 9 staff in technical tools, fostering a tech-savvy team.',
-              'Collaborated on programs requiring custom data solutions.'
-            ],
-            'Customer Service | Countdown, Upper Hutt, New Zealand': [
-              'Implemented reporting tools to streamline operations, enhancing system usability.',
-              'Trained a team of 15 in tech-driven service protocols.',
-              'Engaged with customers to refine digital feedback systems.'
-            ],
-            'Customer Service Lead | Manos Licensed Restaurant, Upper Hutt, New Zealand': [
-              'Designed an inventory management system using data tools, improving efficiency.',
-              'Streamlined operations with tech-focused process improvements.'
-            ]
-          },
-          ideal: `As a Software Developer, I bring proficiency in Python, SQL, and web technologies, paired with a knack for problem-solving and system optimization. My experience in developing data-driven solutions and managing technical projects makes me a strong fit for your development team.`
-        },
-        'project manager': {
-          summary: 'Organized professional with expertise in project planning, capacity building, and stakeholder partnerships, delivering successful community and business initiatives. Skilled in using Trello, Asana, and data tools to drive efficient project outcomes.',
-          competencies: [
-            'Project Planning & Capacity Building',
-            'Community Engagement & Stakeholder Partnerships',
-            'Event Coordination & Volunteer Management',
-            'Written, Verbal, & Presentation Skills'
-          ],
-          skills: [
-            'Project Management: Trello, Asana, Google Workspace',
-            'Data Analysis Tools: Excel, SQL, Power BI, Tableau',
-            'Community Engagement Platforms: Social Media, Canva',
-            'Programming & Web Development: SQL, Python, HTML, CSS'
-          ],
-          experienceOrder: [
-            'Social Media Leader & Billing Analyst | Octopus Energy, Wellington, New Zealand',
-            'Customer Service | Countdown, Upper Hutt, New Zealand',
-            'Customer Service Lead | Manos Licensed Restaurant, Upper Hutt, New Zealand'
-          ],
-          experienceDetails: {
-            'Social Media Leader & Billing Analyst | Octopus Energy, Wellington, New Zealand': [
-              'Managed community engagement projects for 25,000+ customers using Asana and Trello.',
-              'Led a team of 9, coordinating tasks to meet project deadlines.',
-              'Developed strategies to enhance customer outcomes, achieving 20% satisfaction growth.',
-              'Collaborated on affordability programs, overseeing stakeholder partnerships.'
-            ],
-            'Customer Service | Countdown, Upper Hutt, New Zealand': [
-              'Led training projects for 15 staff, improving team performance by 30%.',
-              'Implemented reporting tools to track project progress.',
-              'Managed customer relations to ensure project alignment with community needs.'
-            ],
-            'Customer Service Lead | Manos Licensed Restaurant, Upper Hutt, New Zealand': [
-              'Streamlined operations through project planning, boosting efficiency.',
-              'Managed inventory system implementation, coordinating team efforts.'
-            ]
-          },
-          ideal: `With extensive experience in project planning and stakeholder coordination, I am prepared to excel as a Project Manager. My proficiency with tools like Trello and Asana, combined with my ability to lead teams and deliver results, ensures successful project execution for your organization.`
-        }
-      };
-
-      // Select template or fallback to generic
-      let template = roleTemplates[Object.keys(roleTemplates).find(key => role.toLowerCase().includes(key))] || {
-        summary: 'Versatile professional with a strong background in data analysis, project management, and stakeholder engagement. Experienced in leveraging SQL, Python, and project tools to deliver impactful solutions in community and business settings.',
-        competencies: coreCompetencies,
-        skills: technicalSkills,
-        experienceOrder: experiences.map(e => e.title),
-        experienceDetails: Object.fromEntries(experiences.map(e => [e.title, e.details])),
-        ideal: `With a diverse skill set in data analysis, project management, and technical tools, I am adaptable to various technology roles. My experience delivering community-focused solutions and optimizing processes makes me a valuable asset to your team.`
-      };
-
-      // Set font
-      doc.setFont("helvetica");
-
-      // Header
-      doc.setFontSize(16);
-      doc.setFont("helvetica", "bold");
-      doc.text("Raman Prasad", margin, y);
-      y += 8;
-      doc.setFontSize(10);
-      doc.setFont("helvetica", "normal");
-      doc.text("Upper Hutt, Wellington, New Zealand", margin, y);
-      y += 5;
-      doc.text("Phone: +64 0210348290 | Email: ramanprasad.eth@gmail.com", margin, y);
-      y += 10;
-
-      // Professional Summary
-      checkPageSpace(30);
-      doc.setFontSize(12);
-      doc.setFont("helvetica", "bold");
-      doc.text("Professional Summary", margin, y);
-      y += 8;
-      doc.setFontSize(10);
-      doc.setFont("helvetica", "normal");
-      const summaryLines = doc.splitTextToSize(template.summary, maxWidth);
-      doc.text(summaryLines, margin, y);
-      y += summaryLines.length * 5 + 5;
-
-      // Core Competencies
-      checkPageSpace(50);
-      doc.setFontSize(12);
-      doc.setFont("helvetica", "bold");
-      doc.text("Core Competencies", margin, y);
-      y += 8;
-      doc.setFontSize(10);
-      doc.setFont("helvetica", "normal");
-      template.competencies.forEach(comp => {
-        checkPageSpace(10);
-        const compLines = doc.splitTextToSize(`• ${comp}`, maxWidth - 5);
-        doc.text(compLines, margin + 5, y);
-        y += compLines.length * 5;
-      });
-      y += 5;
-
-      // Technical Skills
-      checkPageSpace(50);
-      doc.setFontSize(12);
-      doc.setFont("helvetica", "bold");
-      doc.text("Technical Skills", margin, y);
-      y += 8;
-      doc.setFontSize(10);
-      doc.setFont("helvetica", "normal");
-      template.skills.forEach(skill => {
-        checkPageSpace(10);
-        const skillLines = doc.splitTextToSize(`• ${skill}`, maxWidth - 5);
-        doc.text(skillLines, margin + 5, y);
-        y += skillLines.length * 5;
-      });
-      y += 5;
-
-      // Professional Experience
-      checkPageSpace(100);
-      doc.setFontSize(12);
-      doc.setFont("helvetica", "bold");
-      doc.text("Professional Experience", margin, y);
-      y += 8;
-      template.experienceOrder.forEach(title => {
-        const exp = experiences.find(e => e.title === title);
-        if (exp) {
-          checkPageSpace(50);
-          doc.setFontSize(10);
-          doc.setFont("helvetica", "bold");
-          doc.text(exp.title, margin, y);
-          y += 5;
-          doc.setFont("helvetica", "normal");
-          doc.text(exp.date, margin, y);
-          y += 5;
-          const details = template.experienceDetails[title] || exp.details;
-          details.forEach(detail => {
-            checkPageSpace(15);
-            const lines = doc.splitTextToSize(`• ${detail}`, maxWidth - 5);
-            doc.text(lines, margin + 5, y);
-            y += lines.length * 5;
-          });
-          y += 5;
-        }
-      });
-
-      // Community Involvement
-      checkPageSpace(60);
-      doc.setFontSize(12);
-      doc.setFont("helvetica", "bold");
-      doc.text("Community Involvement", margin, y);
-      y += 8;
-      doc.setFontSize(10);
-      doc.setFont("helvetica", "normal");
-      communityInvolvement.forEach(item => {
-        checkPageSpace(15);
-        const lines = doc.splitTextToSize(`• ${item}`, maxWidth - 5);
-        doc.text(lines, margin + 5, y);
-        y += lines.length * 5;
-      });
-      y += 10;
-
-      // Education
-      checkPageSpace(60);
-      doc.setFontSize(12);
-      doc.setFont("helvetica", "bold");
-      doc.text("Education", margin, y);
-      y += 8;
-      education.forEach(edu => {
-        checkPageSpace(20);
-        doc.setFontSize(10);
         doc.setFont("helvetica", "bold");
-        doc.text(edu.degree, margin, y);
-        y += 5;
+        doc.setFontSize(16);
+        doc.text("Raman Prasad", margin, y);
+        y += 10;
         doc.setFont("helvetica", "normal");
-        doc.text(`${edu.institution} | ${edu.date}`, margin, y);
-        y += 5;
-        doc.text(edu.focus, margin + 5, y);
-        y += 5;
-      });
-      y += 10;
+        doc.setFontSize(10);
+        doc.text("Email: ramanprasad.eth@gmail.com | Phone: +64 0210348290", margin, y);
+        y += 10;
 
-      // Why I'm the Ideal Candidate
-      checkPageSpace(40);
-      doc.setFontSize(12);
-      doc.setFont("helvetica", "bold");
-      doc.text(`Why I’m the Ideal Candidate for ${role.charAt(0).toUpperCase() + role.slice(1)}`, margin, y);
-      y += 8;
-      doc.setFontSize(10);
-      doc.setFont("helvetica", "normal");
-      const idealLines = doc.splitTextToSize(template.ideal, maxWidth);
-      doc.text(idealLines, margin, y);
-      y += idealLines.length * 5;
+        doc.setFontSize(12);
+        doc.text(`Resume for ${role}`, margin, y);
+        y += 10;
+        doc.setFontSize(10);
+        doc.text("This is a simplified resume. Full version coming soon!", margin, y);
 
-      // Save the PDF
-      doc.save(`Raman_Prasad_${role.replace(/\s+/g, '_')}.pdf`);
+        doc.save(`Raman_Prasad_${role.replace(/\s+/g, '_')}.pdf`);
+      } catch (error) {
+        alert('Error generating resume. Please try again.');
+        console.error(error);
+      }
     }
   </script>
 </body>
