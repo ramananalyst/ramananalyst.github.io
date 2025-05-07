@@ -1,617 +1,909 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ramanprasad</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <style>
-    :root {
-      --glass-bg: rgba(255, 255, 255, 0.08);
-      --glass-border: rgba(255, 255, 255, 0.12);
-      --accent: #0a84ff;
-      --text: #ffffff;
-      --text-secondary: #d1d1d1;
-      --hover-color: #e0e0e0;
-      --shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-      --bg-start: #1c2526;
-      --bg-end: #101720;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      max-width: 768px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--glass-border);
-      z-index: 1000;
-      padding: 12px 16px;
-    }
-
-    .glass-container {
-      background: var(--glass-bg);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--glass-border);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      will-change: transform, box-shadow;
-    }
-
-    .glass-container:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-    }
-
-    nav button {
-      background: transparent;
-      border: none;
-      color: var(--text-secondary);
-      padding: 8px 12px;
-      font-weight: 600;
-      font-size: clamp(0.8rem, 2vw, 0.85rem);
-      cursor: pointer;
-      transition: color 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      border-radius: 8px;
-    }
-
-    nav button.active {
-      color: var(--accent);
-      background: rgba(255, 255, 255, 0.15);
-      animation: pulse 2s infinite;
-    }
-
-    nav button:hover {
-      color: var(--hover-color);
-      background: transparent;
-    }
-
-    .nes-btn {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      color: var(--text);
-      padding: 10px 14px;
-      font-weight: 600;
-      font-size: clamp(0.85rem, 2vw, 0.9rem);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      will-change: transform, box-shadow;
-    }
-
-    .nes-btn:hover {
-      background: rgba(255, 255, 255, 0.12);
-      color: var(--hover-color);
-      transform: scale(1.05);
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
-    }
-
-    .github { background: rgba(36, 41, 46, 0.9); }
-    .linkedin { background: rgba(0, 119, 181, 0.9); }
-    .twitter { background: rgba(29, 161, 242, 0.9); }
-    .email-gmail { background: rgba(220, 53, 69, 0.9); }
-    .email-apple { background: rgba(100, 100, 100, 0.9); }
-    .resume { background: rgba(46, 204, 113, 0.9); }
-
-    .modal-content {
-      background: var(--glass-bg);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--glass-border);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-    }
-
-    .modal-content input {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--glass-border);
-      border-radius: 8px;
-      padding: 10px;
-      color: var(--text);
-      font-size: clamp(0.8rem, 2vw, 0.85rem);
-    }
-
-    .modal-content button {
-      background: var(--accent);
-      border-radius: 8px;
-      padding: 10px 20px;
-      color: #fff;
-      font-weight: 600;
-      font-size: clamp(0.8rem, 2vw, 0.85rem);
-      transition: all 0.2s ease;
-    }
-
-    .modal-content button:hover {
-      background: #0066cc;
-      transform: scale(1.05);
-    }
-
-    .profile img {
-      border: 2px solid var(--accent);
-      border-radius: 50%;
-      transition: transform 0.3s ease;
-      object-fit: cover;
-      max-width: 100%;
-    }
-
-    .profile img:hover {
-      transform: scale(1.1);
-    }
-
-    .experience-item, .project-item, .resume-item {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      padding: 14px;
-      transition: all 0.3s ease;
-      will-change: transform, box-shadow;
-    }
-
-    .experience-item:hover, .project-item:hover, .resume-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    }
-
-    .candidate-text {
-      animation: fadeText 3s ease-in-out infinite;
-    }
-
-    .skills-grid .nes-btn {
-      animation: fadeInSkill 0.5s ease forwards;
-      opacity: 0;
-    }
-
-    .skills-grid .nes-btn:nth-child(1) { animation-delay: 0.1s; }
-    .skills-grid .nes-btn:nth-child(2) { animation-delay: 0.2s; }
-    .skills-grid .nes-btn:nth-child(3) { animation-delay: 0.3s; }
-    .skills-grid .nes-btn:nth-child(4) { animation-delay: 0.4s; }
-    .skills-grid .nes-btn:nth-child(5) { animation-delay: 0.5s; }
-    .skills-grid .nes-btn:nth-child(6) { animation-delay: 0.6s; }
-    .skills-grid .nes-btn:nth-child(7) { animation-delay: 0.7s; }
-    .skills-grid .nes-btn:nth-child(8) { animation-delay: 0.8s; }
-    .skills-grid .nes-btn:nth-child(9) { animation-delay: 0.9s; }
-    .skills-grid .nes-btn:nth-child(10) { animation-delay: 1s; }
-    .skills-grid .nes-btn:nth-child(11) { animation-delay: 1.1s; }
-    .skills-grid .nes-btn:nth-child(12) { animation-delay: 1.2s; }
-
-    .page {
-      display: none;
-      animation: fadeIn 0.5s ease;
-    }
-
-    .page.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInSkill {
-      from { opacity: 0; transform: translateY(5px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes fadeText {
-      0% { opacity: 0.8; }
-      50% { opacity: 1; }
-      100% { opacity: 0.8; }
-    }
-
-    @media (max-width: 640px) {
-      .container {
-        padding: 12px;
-        padding-top: 80px; /* Increased to account for nav height */
-      }
-      .social-grid, .skills-grid, .projects-grid {
-        grid-template-columns: 1fr;
-      }
-      .nes-btn {
-        padding: 8px;
-        font-size: 0.8rem;
-      }
-      .profile img {
-        width: 90px;
-        height: 90px;
-      }
-      .profile {
-        max-width: 100%;
-        overflow: hidden;
-      }
-      nav button {
-        padding: 6px 8px;
-        font-size: 0.75rem;
-      }
-      nav {
-        padding: 8px 12px;
-      }
-      nav button:hover {
-        color: var(--text-secondary);
-        background: transparent;
-        box-shadow: none;
-      }
-      h1 {
-        margin-top: 10px;
-        font-size: 1.75rem; /* Reduced for mobile */
-      }
-    }
-
-    @media (min-width: 641px) and (max-width: 768px) {
-      .social-grid, .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-      .container {
-        padding-top: 70px; /* Adjusted for nav height */
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Raman Prasad - Portfolio</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+            background-color: #f5f9fc;
+            color: #1a202c;
+            line-height: 1.6;
+            padding: 90px 0 24px;
+            overscroll-behavior: none;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #e5e5e5;
+        }
+        .nav-container {
+            position: fixed;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1000;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 12px 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 340px;
+            max-width: 90%;
+            transition: background 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease, width 0.3s ease;
+        }
+        .navbar.transparent {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            opacity: 0.3;
+        }
+        body.dark-mode .navbar {
+            background: rgba(44, 44, 44, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        body.dark-mode .navbar.transparent {
+            background: rgba(44, 44, 44, 0.05);
+        }
+        .navbar button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 12px;
+            position: relative;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .navbar button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        .navbar button:active {
+            transform: scale(0.95);
+        }
+        .navbar button.active {
+            background: linear-gradient(135deg, rgba(163, 207, 255, 0.7), rgba(200, 200, 200, 0.7));
+            box-shadow: 0 0 15px rgba(163, 207, 255, 0.5);
+            animation: fadeHighlight 0.5s ease forwards;
+        }
+        body.dark-mode .navbar button.active {
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.7), rgba(150, 150, 150, 0.7));
+            box-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
+        }
+        .navbar button.active i {
+            stroke: #1a202c;
+        }
+        body.dark-mode .navbar button.active i {
+            stroke: #ffffff;
+        }
+        .navbar i {
+            width: 24px;
+            height: 24px;
+            stroke: #1a202c;
+            stroke-width: 2;
+            transition: stroke 0.3s ease;
+        }
+        body.dark-mode .navbar i {
+            stroke: #e5e5e5;
+        }
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 12px;
+            border-radius: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background 0.5s ease, opacity 0.5s ease;
+        }
+        .theme-toggle.transparent {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            opacity: 0.3;
+        }
+        body.dark-mode .theme-toggle {
+            background: rgba(44, 44, 44, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        body.dark-mode .theme-toggle.transparent {
+            background: rgba(44, 44, 44, 0.05);
+        }
+        .theme-toggle button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .theme-toggle button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        .theme-toggle button:active {
+            transform: scale(0.95);
+        }
+        .theme-toggle i {
+            width: 24px;
+            height: 24px;
+            stroke: #1a202c;
+            stroke-width: 2;
+            transition: stroke 0.3s ease;
+        }
+        body.dark-mode .theme-toggle i {
+            stroke: #e5e5e5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 24px 16px;
+        }
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .greeting {
+            font-size: 34px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        .greeting span {
+            font-size: 26px;
+        }
+        body.dark-mode .greeting {
+            color: #e5e5e5;
+        }
+        .description {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 24px;
+            line-height: 1.8;
+            max-width: 700px;
+            animation: fadeIn 1s ease forwards;
+        }
+        body.dark-mode .description {
+            color: #a0a0a0;
+        }
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 48px;
+            animation: fadeIn 1.2s ease forwards;
+        }
+        .social-links a {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            color: #1a202c;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        body.dark-mode .social-links a {
+            background: rgba(255, 255, 255, 0.05);
+            color: #e5e5e5;
+        }
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        body.dark-mode .social-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .social-links a:active {
+            transform: scale(0.98);
+        }
+        .social-links a.github { background: rgba(36, 41, 46, 0.9); color: #ffffff; }
+        .social-links a.linkedin { background: rgba(0, 119, 181, 0.9); color: #ffffff; }
+        .social-links a.twitter { background: rgba(29, 161, 242, 0.9); color: #ffffff; }
+        .social-links a.email-gmail { background: rgba(220, 53, 69, 0.9); color: #ffffff; }
+        .social-links a.email-apple { background: rgba(100, 100, 100, 0.9); color: #ffffff; }
+        .social-links i {
+            width: 16px;
+            height: 16px;
+            stroke: #ffffff;
+            stroke-width: 2;
+        }
+        .buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 48px;
+            animation: fadeIn 1.2s ease forwards;
+        }
+        .buttons button {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            color: #1a202c;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        body.dark-mode .buttons button {
+            background: rgba(255, 255, 255, 0.05);
+            color: #e5e5e5;
+        }
+        .buttons button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        body.dark-mode .buttons button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .buttons button:active {
+            transform: scale(0.98);
+        }
+        .buttons .active {
+            background: #34c759;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(52, 199, 89, 0.3);
+        }
+        .buttons .active:hover {
+            background: #2eb350;
+            transform: translateY(-3px);
+        }
+        .notes-section, .resume-section, .projects-section, .blog-section {
+            margin-bottom: 48px;
+        }
+        .notes-section h2, .resume-section h2, .projects-section h2, .blog-section h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1a202c;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        body.dark-mode .notes-section h2,
+        body.dark-mode .resume-section h2,
+        body.dark-mode .projects-section h2,
+        body.dark-mode .blog-section h2 {
+            color: #e5e5e5;
+        }
+        .note, .resume-entry, .project, .blog-post {
+            padding: 20px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            font-size: 16px;
+            color: #1a202c;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease forwards;
+        }
+        body.dark-mode .note,
+        body.dark-mode .resume-entry,
+        body.dark-mode .project,
+        body.dark-mode .blog-post {
+            background: rgba(255, 255, 255, 0.05);
+            color: #e5e5e5;
+        }
+        .note:hover, .resume-entry:hover, .project:hover, .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        body.dark-mode .note:hover,
+        body.dark-mode .resume-entry:hover,
+        body.dark-mode .project:hover,
+        body.dark-mode .blog-post:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .resume-entry h3, .project h3, .blog-post h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        body.dark-mode .resume-entry h3,
+        body.dark-mode .project h3,
+        body.dark-mode .blog-post h3 {
+            color: #e5e5e5;
+        }
+        .resume-entry p, .project p, .blog-post p {
+            color: #6b7280;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        body.dark-mode .resume-entry p,
+        body.dark-mode .project p,
+        body.dark-mode .blog-post p {
+            color: #a0a0a0;
+        }
+        .resume-entry ul, .project ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+        .resume-entry ul li, .project ul li {
+            color: #6b7280;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        body.dark-mode .resume-entry ul li,
+        body.dark-mode .project ul li {
+            color: #a0a0a0;
+        }
+        .cv-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease forwards;
+        }
+        body.dark-mode .cv-section {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .cv-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        body.dark-mode .cv-section:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .cv-section h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a202c;
+        }
+        body.dark-mode .cv-section h2 {
+            color: #e5e5e5;
+        }
+        .cv-section button {
+            padding: 12px 28px;
+            background: #007aff;
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+        }
+        .cv-section button:hover {
+            background: #005bd4;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+        }
+        .cv-section button:active {
+            transform: scale(0.98);
+        }
+        .cv-section button i {
+            width: 16px;
+            height: 16px;
+            stroke: #ffffff;
+            stroke-width: 2;
+        }
+        .profile-img {
+            width: 112px;
+            height: 112px;
+            border-radius: 50%;
+            border: 2px solid #0a84ff;
+            object-fit: cover;
+            margin-bottom: 12px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        .profile-img:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 20px rgba(10, 132, 255, 0.5);
+        }
+        footer {
+            text-align: center;
+            margin-top: 24px;
+            margin-bottom: 16px;
+            color: #6b7280;
+            font-size: 14px;
+            animation: fadeIn 1s ease forwards;
+        }
+        body.dark-mode footer {
+            color: #a0a0a0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeHighlight {
+            0% { background: rgba(255, 255, 255, 0.2); box-shadow: 0 0 5px rgba(163, 207, 255, 0.2); }
+            50% { background: linear-gradient(135deg, rgba(163, 207, 255, 0.9), rgba(200, 200, 200, 0.9)); box-shadow: 0 0 20px rgba(163, 207, 255, 0.7); }
+            100% { background: linear-gradient(135deg, rgba(163, 207, 255, 0.7), rgba(200, 200, 200, 0.7)); box-shadow: 0 0 15px rgba(163, 207, 255, 0.5); }
+        }
+        @media (max-width: 768px) {
+            .nav-container {
+                gap: 8px;
+            }
+            .navbar {
+                width: 300px;
+                padding: 10px 18px;
+            }
+            .container {
+                padding: 16px;
+            }
+            .greeting {
+                font-size: 28px;
+            }
+            .greeting span {
+                font-size: 22px;
+            }
+            .description {
+                font-size: 15px;
+                max-width: 100%;
+            }
+            .social-links, .buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .social-links a, .buttons button {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+            .notes-section h2, .resume-section h2, .projects-section h2, .blog-section h2 {
+                font-size: 20px;
+            }
+            .note, .resume-entry, .project, .blog-post {
+                font-size: 15px;
+                padding: 16px;
+            }
+            .cv-section {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+                padding: 16px;
+            }
+            .cv-section h2 {
+                font-size: 18px;
+            }
+            .cv-section button {
+                padding: 10px 24px;
+                font-size: 14px;
+            }
+            .profile-img {
+                width: 90px;
+                height: 90px;
+            }
+        }
+        @media (max-width: 480px) {
+            .navbar {
+                width: 260px;
+                padding: 8px 16px;
+            }
+            .navbar button {
+                padding: 8px;
+            }
+            .navbar i {
+                width: 22px;
+                height: 22px;
+            }
+            .theme-toggle {
+                padding: 8px;
+            }
+            .theme-toggle i {
+                width: 22px;
+                height: 22px;
+            }
+            .greeting {
+                font-size: 24px;
+            }
+            .greeting span {
+                font-size: 20px;
+            }
+            .description {
+                font-size: 14px;
+            }
+            .social-links a, .buttons button {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+            .cv-section h2 {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <nav class="flex justify-center gap-2 flex-wrap">
-    <button onclick="showPage('home')" class="active flex items-center gap-2"><i class="fas fa-home"></i> Home</button>
-    <button onclick="showPage('resume')" class="flex items-center gap-2"><i class="fas fa-file-alt"></i> Resume</button>
-    <button onclick="showPage('skills')" class="flex items-center gap-2"><i class="fas fa-code"></i> Skills</button>
-    <button onclick="showPage('experience')" class="flex items-center gap-2"><i class="fas fa-briefcase"></i> Experience</button>
-    <button onclick="showPage('projects')" class="flex items-center gap-2"><i class="fas fa-project-diagram"></i> Projects</button>
-  </nav>
-
-  <div class="container mx-auto px-4 py-16 max-w-3xl flex-1">
-    <h1 class="text-3xl sm:text-4xl font-bold text-center text-white mb-6">ramanprasad</h1>
-
-    <div id="resumeModal" class="modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50 hidden">
-      <div class="modal-content p-6 w-full max-w-sm text-center">
-        <h2 class="text-xl font-semibold text-white mb-4">Download Resume</h2>
-        <p class="mb-4 text-gray-200 text-sm">Enter the tech role you're hiring for:</p>
-        <input type="text" id="roleInput" placeholder="e.g., Data Analyst, Software Developer" class="w-full mb-4">
-        <button onclick="downloadResume()">Generate Resume</button>
-        <button onclick="closeModal()" class="bg-red-500 mt-3">Cancel</button>
-      </div>
+    <div class="nav-container">
+        <div class="navbar" id="navbar">
+            <button title="Home" data-page="home" class="active">
+                <i data-lucide="home"></i>
+            </button>
+            <button title="Resume" data-page="resume">
+                <i data-lucide="file-text"></i>
+            </button>
+            <button title="Projects" data-page="projects">
+                <i data-lucide="briefcase"></i>
+            </button>
+            <button title="Blog" data-page="blog">
+                <i data-lucide="pen-tool"></i>
+            </button>
+        </div>
+        <div class="theme-toggle" id="theme-toggle">
+            <button id="theme-button">
+                <i data-lucide="sun"></i>
+            </button>
+        </div>
     </div>
 
-    <div id="home" class="page glass-container p-5 active">
-      <div class="profile text-center mb-5">
-        <img src="https://i.postimg.cc/yx7ZNbPd/1-CF46048-E1-DD-453-E-92-BC-621257-C74524-1-105-c.jpg" alt="Raman's Profile Picture" class="w-28 h-28 mx-auto mb-3">
-        <h2 class="text-xl font-semibold text-white">Raman Prasad</h2>
-        <p class="text-sm text-gray-300">Software Engineer | Full-Stack Developer | Data Enthusiast</p>
-      </div>
-      <div class="social-grid grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <a href="https://github.com/ramanprasadeth" class="nes-btn github"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://linkedin.com/in/ramanprasadeth" class="nes-btn linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://twitter.com/ramanprasadeth" class="nes-btn twitter"><i class="fab fa-x-twitter"></i> X</a>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hey@raman.engineer" target="_blank" class="nes-btn email-gmail"><i class="fas fa-envelope"></i> Gmail</a>
-        <a href="mailto:hey@raman.engineer" class="nes-btn email-apple"><i class="fas fa-envelope"></i> Apple Mail</a>
-      </div>
+    <div class="container">
+        <div id="home" class="page active">
+            <div class="profile text-center mb-5">
+                <img src="https://i.postimg.cc/yx7ZNbPd/1-CF46048-E1-DD-453-E-92-BC-621257-C74524-1-105-c.jpg" alt="Raman's Profile Picture" class="profile-img mx-auto">
+                <div class="greeting">
+                    Hi, I’m Raman Prasad <span>👋</span>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Software Engineer | Full-Stack Developer | Data Enthusiast</p>
+            </div>
+            <div class="description">
+                Community-focused professional with over a decade of residency in Upper Hutt and extensive experience in stakeholder engagement, project management, and capacity building. Passionate about creating safe, resilient, and connected communities.
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/ramanprasadeth" class="github">
+                    <i data-lucide="github"></i>
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/ramanprasadeth" class="linkedin">
+                    <i data-lucide="linkedin"></i>
+                    LinkedIn
+                </a>
+                <a href="https://twitter.com/ramanprasadeth" class="twitter">
+                    <i data-lucide="twitter"></i>
+                    X
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hey@raman.engineer" target="_blank" class="email-gmail">
+                    <i data-lucide="mail"></i>
+                    Gmail
+                </a>
+                <a href="mailto:ramanprasad.eth@gmail.com" class="email-apple">
+                    <i data-lucide="mail"></i>
+                    Apple Mail
+                </a>
+            </div>
+            <div class="notes-section">
+                <h2>Latest Notes</h2>
+                <div class="note">
+                    Passionate about creating safe, resilient, and connected communities through technology and community engagement.
+                </div>
+            </div>
+            <div class="cv-section">
+                <h2>Do you want to know about my professional experience?</h2>
+                <button>
+                    Check CV
+                    <i data-lucide="file"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="resume" class="page">
+            <div class="greeting">
+                My Resume
+            </div>
+            <div class="description">
+                A summary of my professional journey, showcasing my skills, experience, and education in software engineering, data analysis, and community engagement.
+            </div>
+            <div class="resume-section">
+                <h2>Contact Information</h2>
+                <div class="resume-entry">
+                    <h3>Raman Prasad</h3>
+                    <p>Upper Hutt, Wellington, New Zealand</p>
+                    <p>Phone: +64 0210348290 | Email: ramanprasad.eth@gmail.com</p>
+                </div>
+                <h2>Professional Summary</h2>
+                <div class="resume-entry">
+                    <p>Community-focused professional with over a decade of residency in Upper Hutt and extensive experience in stakeholder engagement, project management, and capacity building. Proven success in fostering connections, empowering local organizations, and delivering initiatives that strengthen community ties. Passionate about creating safe, resilient, and connected communities, with a strong commitment to the people and organizations of Upper Hutt.</p>
+                </div>
+                <h2>Core Competencies</h2>
+                <div class="resume-entry">
+                    <ul>
+                        <li>Community Engagement & Stakeholder Partnerships</li>
+                        <li>Project Planning & Capacity Building</li>
+                        <li>Event Coordination & Volunteer Management</li>
+                        <li>Data Analysis & Reporting (Excel, SQL, Power BI)</li>
+                        <li>Written, Verbal, & Presentation Skills</li>
+                        <li>Organizational Development & Process Improvement</li>
+                    </ul>
+                </div>
+                <h2>Professional Experience</h2>
+                <div class="resume-entry">
+                    <h3>Social Media Leader & Billing Analyst | Octopus Energy</h3>
+                    <p>2023 – Present | Wellington, New Zealand</p>
+                    <ul>
+                        <li>Spearheaded community engagement initiatives, supporting over 25,000 customers, including business accounts.</li>
+                        <li>Trained and led a team of 9 staff in delivering customer-first, community-aligned service outcomes.</li>
+                        <li>Developed data-driven strategies to address community needs, improving customer satisfaction by 20%.</li>
+                        <li>Collaborated on affordability programs to support vulnerable populations, aligning with community wellness goals.</li>
+                    </ul>
+                </div>
+                <div class="resume-entry">
+                    <h3>Customer Service | Countdown</h3>
+                    <p>2019 – 2023 | Upper Hutt, New Zealand</p>
+                    <ul>
+                        <li>Trained a team of 15 customer service representatives, driving a culture of collaboration and excellence.</li>
+                        <li>Improved service delivery by 30% through the implementation of innovative reporting tools.</li>
+                        <li>Built relationships with local residents, addressing their needs with empathy and responsiveness.</li>
+                    </ul>
+                </div>
+                <div class="resume-entry">
+                    <h3>Customer Service Lead | Manos Licensed Restaurant</h3>
+                    <p>2015 – 2018 | Upper Hutt, New Zealand</p>
+                    <ul>
+                        <li>Supported local business growth by streamlining customer service operations, contributing to increased patron satisfaction.</li>
+                        <li>Designed and implemented a simplified inventory management system, enhancing operational efficiency.</li>
+                    </ul>
+                </div>
+                <h2>Community Involvement</h2>
+                <div class="resume-entry">
+                    <ul>
+                        <li>Community Support and Social Media Advocate: Actively engaged in local initiatives, supporting vulnerable groups through social media platforms.</li>
+                        <li>Volunteer Mentor: Assisted youth in Upper Hutt with skill-building and career development workshops.</li>
+                        <li>Community Listening Groups: Facilitated discussions to identify community needs and develop actionable solutions.</li>
+                    </ul>
+                </div>
+                <h2>Education</h2>
+                <div class="resume-entry">
+                    <h3>Bachelor of Science in Computer Science and Data Science</h3>
+                    <p>Massey University, New Zealand | 2026</p>
+                    <p>Focus: Data analysis, predictive modeling, and community behavior trends.</p>
+                </div>
+                <div class="resume-entry">
+                    <h3>Educational Psychology and Criminology</h3>
+                    <p>Victoria University of Wellington, New Zealand | 2022-2023</p>
+                    <p>Focus: Behavioral insights and community development strategies.</p>
+                </div>
+                <h2>Technical Skills</h2>
+                <div class="resume-entry">
+                    <ul>
+                        <li>Community Engagement Platforms: Social Media, Canva</li>
+                        <li>Data Analysis Tools: Excel, SQL, Power BI, Tableau</li>
+                        <li>Programming & Web Development: SQL, Python, HTML, CSS</li>
+                        <li>Project Management: Trello, Asana, Google Workspace</li>
+                    </ul>
+                </div>
+                <h2>Hey, I’m Your Ideal Candidate</h2>
+                <div class="resume-entry">
+                    <p>As a computer science and data science student at Massey University, I bring a versatile skill set tailored for roles in software engineering, data analysis, web development, and more. My hands-on experience with the following technologies equips me to tackle complex technical challenges, from building dynamic web applications to uncovering actionable insights through data.</p>
+                    <div class="skills-grid grid grid-cols-2 sm:grid-cols-3 gap-3 mt-3">
+                        <div class="nes-btn">JavaScript</div>
+                        <div class="nes-btn">Python</div>
+                        <div class="nes-btn">React</div>
+                        <div class="nes-btn">Node.js</div>
+                        <div class="nes-btn">SQL</div>
+                        <div class="nes-btn">AWS</div>
+                        <div class="nes-btn">Docker</div>
+                        <div class="nes-btn">Git</div>
+                        <div class="nes-btn">HTML/CSS</div>
+                        <div class="nes-btn">TypeScript</div>
+                        <div class="nes-btn">MongoDB</div>
+                        <div class="nes-btn">Tableau</div>
+                    </div>
+                    <p class="mt-3">I’ve led projects that improved customer satisfaction by 20% using data-driven strategies and streamlined operations with custom systems, showcasing my ability to deliver results. My community engagement background enhances my teamwork and communication skills, making me a collaborative asset in fast-paced tech environments. Whether developing scalable software, designing intuitive websites, or analyzing data to drive decisions, I’m passionate about creating impactful solutions and ready to excel in your organization.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="projects" class="page">
+            <div class="greeting">
+                My Projects
+            </div>
+            <div class="description">
+                A collection of projects I've worked on, showcasing my expertise in web development, data analysis, and software engineering.
+            </div>
+            <div class="projects-section">
+                <h2>Featured Projects</h2>
+                <div class="project">
+                    <h3>Community Data Dashboard</h3>
+                    <p>A Python-based tool using SQL and Tableau to analyze community trends, supporting local initiatives.</p>
+                    <div class="links flex gap-3 mt-2">
+                        <a href="https://your-demo-link.com" target="_blank" class="nes-btn">View Demo</a>
+                        <a href="https://github.com/ramanprasadeth/community-dashboard" target="_blank" class="nes-btn github">GitHub</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <h3>Flappy Bird Game</h3>
+                    <p>A JavaScript-based Flappy Bird clone built with HTML5 Canvas, featuring responsive controls and score tracking.</p>
+                    <div class="links flex gap-3 mt-2">
+                        <a href="https://your-demo-link.com/flappy-bird" target="_blank" class="nes-btn">Play Game</a>
+                        <a href="https://github.com/ramanprasadeth/flappy-bird" target="_blank" class="nes-btn github">GitHub</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <h3>HTML/CSS Live Editor</h3>
+                    <p>A real-time HTML/CSS editor built with React, allowing users to write and preview code instantly.</p>
+                    <div class="links flex gap-3 mt-2">
+                        <a href="https://your-demo-link.com/html-editor" target="_blank" class="nes-btn">Try Editor</a>
+                        <a href="https://github.com/ramanprasadeth/html-editor" target="_blank" class="nes-btn github">GitHub</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <h3>Chat Bot</h3>
+                    <p>An AI-powered chatbot using Node.js and NLP to handle user queries interactively.</p>
+                    <div class="links flex gap-3 mt-2">
+                        <a href="https://your-demo-link.com/chatbot" target="_blank" class="nes-btn">Chat Now</a>
+                        <a href="https://github.com/ramanprasadeth/chatbot" target="_blank" class="nes-btn github">GitHub</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <h3>Data Visualizer</h3>
+                    <p>An interactive tool built with D3.js and Python, displaying complex datasets dynamically.</p>
+                    <div class="links flex gap-3 mt-2">
+                        <a href="https://your-demo-link.com/data-visualizer" target="_blank" class="nes-btn">View Visuals</a>
+                        <a href="https://github.com/ramanprasadeth/data-visualizer" target="_blank" class="nes-btn github">GitHub</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <h3>Task Manager App</h3>
+                    <p>A full-stack app using React, Node.js, and MongoDB, with user authentication and real-time updates.</p>
+                    <div class="links flex gap-3 mt-2">
+                        <a href="https://your-demo-link.com/task-manager" target="_blank" class="nes-btn">Try App</a>
+                        <a href="https://github.com/ramanprasadeth/task-manager" target="_blank" class="nes-btn github">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="blog" class="page">
+            <div class="greeting">
+                My Blog
+            </div>
+            <div class="description">
+                Thoughts, tutorials, and insights on web development, technology trends, and more.
+            </div>
+            <div class="blog-section">
+                <h2>Recent Posts</h2>
+                <div class="blog-post">
+                    <h3>The Future of Web Development in 2025</h3>
+                    <p>Exploring emerging trends like AI-driven design tools and the rise of WebAssembly.</p>
+                </div>
+                <div class="blog-post">
+                    <h3>Building Responsive UI with CSS Grid</h3>
+                    <p>A step-by-step guide to creating flexible layouts using CSS Grid for modern web applications.</p>
+                </div>
+                <div class="blog-post">
+                    <h3>Why JavaScript Frameworks Are Still Relevant</h3>
+                    <p>Discussing the continued importance of frameworks like React and Vue in today’s development landscape.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="resume" class="page glass-container p-5 hidden">
-      <h2 class="text-xl font-semibold text-white mb-4">Resume</h2>
-      <div class="resume-item mb-4">
-        <h3 class="text-lg font-semibold text-white">Raman Prasad</h3>
-        <p class="text-sm text-gray-300">Upper Hutt, Wellington, New Zealand</p>
-        <p class="text-sm text-gray-300">Phone: +64 0210348290 | Email: ramanprasad.eth@gmail.com</p>
-      </div>
-      <div class="resume-item mb-4">
-        <h3 class="text-lg font-semibold text-white">Professional Summary</h3>
-        <p class="text-sm text-gray-200">Community-focused professional with over a decade of residency in Upper Hutt and extensive experience in stakeholder engagement, project management, and capacity building. Proven success in fostering connections, empowering local organizations, and delivering initiatives that strengthen community ties. Passionate about creating safe, resilient, and connected communities, with a strong commitment to the people and organizations of Upper Hutt.</p>
-      </div>
-      <div class="resume-item mb-4">
-        <h3 class="text-lg font-semibold text-white">Core Competencies</h3>
-        <ul class="text-sm text-gray-200 list-disc pl-5">
-          <li>Community Engagement & Stakeholder Partnerships</li>
-          <li>Project Planning & Capacity Building</li>
-          <li>Event Coordination & Volunteer Management</li>
-          <li>Data Analysis & Reporting (Excel, SQL, Power BI)</li>
-          <li>Written, Verbal, & Presentation Skills</li>
-          <li>Organizational Development & Process Improvement</li>
-        </ul>
-      </div>
-      <div class="resume-item mb-4">
-        <h3 class="text-lg font-semibold text-white">Professional Experience</h3>
-        <div class="mb-2">
-          <h4 class="text-base font-semibold text-gray-200">Social Media Leader & Billing Analyst | Octopus Energy</h4>
-          <p class="text-sm text-gray-300">2023 – Present | Wellington, New Zealand</p>
-          <ul class="text-sm text-gray-200 list-disc pl-5">
-            <li>Spearheaded community engagement initiatives, supporting over 25,000 customers, including business accounts.</li>
-            <li>Trained and led a team of 9 staff in delivering customer-first, community-aligned service outcomes.</li>
-            <li>Developed data-driven strategies to address community needs, improving customer satisfaction by 20%.</li>
-            <li>Collaborated on affordability programs to support vulnerable populations, aligning with community wellness goals.</li>
-          </ul>
-        </div>
-        <div class="mb-2">
-          <h4 class="text-base font-semibold text-gray-200">Customer Service | Countdown</h4>
-          <p class="text-sm text-gray-300">2019 – 2023 | Upper Hutt, New Zealand</p>
-          <ul class="text-sm text-gray-200 list-disc pl-5">
-            <li>Trained a team of 15 customer service representatives, driving a culture of collaboration and excellence.</li>
-            <li>Improved service delivery by 30% through the implementation of innovative reporting tools.</li>
-            <li>Built relationships with local residents, addressing their needs with empathy and responsiveness.</li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-base font-semibold text-gray-200">Customer Service Lead | Manos Licensed Restaurant</h4>
-          <p class="text-sm text-gray-300">2015 – 2018 | Upper Hutt, New Zealand</p>
-          <ul class="text-sm text-gray-200 list-disc pl-5">
-            <li>Supported local business growth by streamlining customer service operations, contributing to increased patron satisfaction.</li>
-            <li>Designed and implemented a simplified inventory management system, enhancing operational efficiency.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="resume-item mb-4">
-        <h3 class="text-lg font-semibold text-white">Community Involvement</h3>
-        <ul class="text-sm text-gray-200 list-disc pl-5">
-          <li>Community Support and Social Media Advocate: Actively engaged in local initiatives, supporting vulnerable groups through social media platforms.</li>
-          <li>Volunteer Mentor: Assisted youth in Upper Hutt with skill-building and career development workshops.</li>
-          <li>Community Listening Groups: Facilitated discussions to identify community needs and develop actionable solutions.</li>
-        </ul>
-      </div>
-      <div class="resume-item mb-4">
-        <h3 class="text-lg font-semibold text-white">Education</h3>
-        <div class="mb-2">
-          <h4 class="text-base font-semibold text-gray-200">Bachelor of Science in Computer Science and Data Science</h4>
-          <p class="text-sm text-gray-300">Massey University, New Zealand | 2026</p>
-          <p class="text-sm text-gray-200">Focus: Data analysis, predictive modeling, and community behavior trends.</p>
-        </div>
-        <div>
-          <h4 class="text-base font-semibold text-gray-200">Educational Psychology and Criminology</h4>
-          <p class="text-sm text-gray-300">Victoria University of Wellington, New Zealand | 2022-2023</p>
-          <p class="text-sm text-gray-200">Focus: Behavioral insights and community development strategies.</p>
-        </div>
-      </div>
-      <div class="resume-item mb-4">
-        <h3 class="text-lg font-semibold text-white">Technical Skills</h3>
-        <ul class="text-sm text-gray-200 list-disc pl-5">
-          <li>Community Engagement Platforms: Social Media, Canva</li>
-          <li>Data Analysis Tools: Excel, SQL, Power BI, Tableau</li>
-          <li>Programming & Web Development: SQL, Python, HTML, CSS</li>
-          <li>Project Management: Trello, Asana, Google Workspace</li>
-        </ul>
-      </div>
-      <div class="resume-item mb-4">
-        <h3 class="text-lg font-semibold text-white">Hey, I’m Your Ideal Candidate</h3>
-        <p class="text-sm text-gray-200 candidate-text">As a computer science and data science student at Massey University, I bring a versatile skill set tailored for roles in software engineering, data analysis, web development, and more. My hands-on experience with the following technologies equips me to tackle complex technical challenges, from building dynamic web applications to uncovering actionable insights through data.</p>
-        <div class="skills-grid grid grid-cols-2 sm:grid-cols-3 gap-3 mt-3">
-          <div class="nes-btn">JavaScript</div>
-          <div class="nes-btn">Python</div>
-          <div class="nes-btn">React</div>
-          <div class="nes-btn">Node.js</div>
-          <div class="nes-btn">SQL</div>
-          <div class="nes-btn">AWS</div>
-          <div class="nes-btn">Docker</div>
-          <div class="nes-btn">Git</div>
-          <div class="nes-btn">HTML/CSS</div>
-          <div class="nes-btn">TypeScript</div>
-          <div class="nes-btn">MongoDB</div>
-          <div class="nes-btn">Tableau</div>
-        </div>
-        <p class="text-sm text-gray-200 candidate-text mt-3">I’ve led projects that improved customer satisfaction by 20% using data-driven strategies and streamlined operations with custom systems, showcasing my ability to deliver results. My community engagement background enhances my teamwork and communication skills, making me a collaborative asset in fast-paced tech environments. Whether developing scalable software, designing intuitive websites, or analyzing data to drive decisions, I’m passionate about creating impactful solutions and ready to excel in your organization.</p>
-      </div>
-      <div class="text-center mt-4">
-        <button onclick="openModal()" class="nes-btn resume"><i class="fas fa-download"></i> Download Resume</button>
-      </div>
-    </div>
+    <footer>© 2025 raman.engineer | Built with 💻 by Raman</footer>
 
-    <div id="skills" class="page glass-container p-5 hidden">
-      <h2 class="text-xl font-semibold text-white mb-4">Technical Skills</h2>
-      <div class="skills-grid grid grid-cols-2 sm:grid-cols-3 gap-3">
-        <div class="nes-btn">JavaScript</div>
-        <div class="nes-btn">Python</div>
-        <div class="nes-btn">React</div>
-        <div class="nes-btn">Node.js</div>
-        <div class="nes-btn">SQL</div>
-        <div class="nes-btn">AWS</div>
-        <div class="nes-btn">Docker</div>
-        <div class="nes-btn">Git</div>
-        <div class="nes-btn">HTML/CSS</div>
-        <div class="nes-btn">TypeScript</div>
-        <div class="nes-btn">MongoDB</div>
-        <div class="nes-btn">Tableau</div>
-      </div>
-    </div>
+    <script>
+        lucide.createIcons();
 
-    <div id="experience" class="page glass-container p-5 hidden">
-      <h2 class="text-xl font-semibold text-white mb-4">Work Experience</h2>
-      <div class="experience-item mb-4">
-        <h3 class="text-lg font-semibold text-white">Social Media Leader & Billing Analyst | Octopus Energy</h3>
-        <p class="text-sm text-gray-300">2023 – Present | Wellington, New Zealand</p>
-        <p class="text-sm text-gray-200">Led community engagement for 25,000+ customers, using SQL and Power BI to boost satisfaction by 20%.</p>
-      </div>
-      <div class="experience-item mb-4">
-        <h3 class="text-lg font-semibold text-white">Customer Service | Countdown</h3>
-        <p class="text-sm text-gray-300">2019 – 2023 | Upper Hutt, New Zealand</p>
-        <p class="text-sm text-gray-200">Trained 15 team members, improving service delivery by 30% with innovative reporting tools.</p>
-      </div>
-      <div class="experience-item">
-        <h3 class="text-lg font-semibold text-white">Customer Service Lead | Manos Licensed Restaurant</h3>
-        <p class="text-sm text-gray-300">2015 – 2018 | Upper Hutt, New Zealand</p>
-        <p class="text-sm text-gray-200">Streamlined operations and designed an inventory system, enhancing efficiency.</p>
-      </div>
-    </div>
+        const navButtons = document.querySelectorAll('.navbar button');
+        const pages = document.querySelectorAll('.page');
+        const navbar = document.getElementById('navbar');
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeButton = document.getElementById('theme-button');
+        let currentPageIndex = 0;
+        let lastScrollTop = 0;
+        let isDarkMode = false;
 
-    <div id="projects" class="page glass-container p-5 hidden">
-      <h2 class="text-xl font-semibold text-white mb-4">Projects</h2>
-      <div class="projects-grid grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div class="project-item">
-          <h3 class="text-lg font-semibold text-white">Community Data Dashboard</h3>
-          <p class="text-sm text-gray-200">A Python-based tool using SQL and Tableau to analyze community trends, supporting local initiatives.</p>
-          <div class="links flex gap-3 mt-2">
-            <a href="https://your-demo-link.com" target="_blank" class="nes-btn">View Demo</a>
-            <a href="https://github.com/ramanprasadeth/community-dashboard" target="_blank" class="nes-btn github">GitHub</a>
-          </div>
-        </div>
-        <div class="project-item">
-          <h3 class="text-lg font-semibold text-white">Flappy Bird Game</h3>
-          <p class="text-sm text-gray-200">A JavaScript-based Flappy Bird clone built with HTML5 Canvas, featuring responsive controls and score tracking.</p>
-          <div class="links flex gap-3 mt-2">
-            <a href="https://your-demo-link.com/flappy-bird" target="_blank" class="nes-btn">Play Game</a>
-            <a href="https://github.com/ramanprasadeth/flappy-bird" target="_blank" class="nes-btn github">GitHub</a>
-          </div>
-        </div>
-        <div class="project-item">
-          <h3 class="text-lg font-semibold text-white">HTML/CSS Live Editor</h3>
-          <p class="text-sm text-gray-200">A real-time HTML/CSS editor built with React, allowing users to write and preview code instantly.</p>
-          <div class="links flex gap-3 mt-2">
-            <a href="https://your-demo-link.com/html-editor" target="_blank" class="nes-btn">Try Editor</a>
-            <a href="https://github.com/ramanprasadeth/html-editor" target="_blank" class="nes-btn github">GitHub</a>
-          </div>
-        </div>
-        <div class="project-item">
-          <h3 class="text-lg font-semibold text-white">Chat Bot</h3>
-          <p class="text-sm text-gray-200">An AI-powered chatbot using Node.js and NLP to handle user queries interactively.</p>
-          <div class="links flex gap-3 mt-2">
-            <a href="https://your-demo-link.com/chatbot" target="_blank" class="nes-btn">Chat Now</a>
-            <a href="https://github.com/ramanprasadeth/chatbot" target="_blank" class="nes-btn github">GitHub</a>
-          </div>
-        </div>
-        <div class="project-item">
-          <h3 class="text-lg font-semibold text-white">Data Visualizer</h3>
-          <p class="text-sm text-gray-200">An interactive tool built with D3.js and Python, displaying complex datasets dynamically.</p>
-          <div class="links flex gap-3 mt-2">
-            <a href="https://your-demo-link.com/data-visualizer" target="_blank" class="nes-btn">View Visuals</a>
-            <a href="https://github.com/ramanprasadeth/data-visualizer" target="_blank" class="nes-btn github">GitHub</a>
-          </div>
-        </div>
-        <div class="project-item">
-          <h3 class="text-lg font-semibold text-white">Task Manager App</h3>
-          <p class="text-sm text-gray-200">A full-stack app using React, Node.js, and MongoDB, with user authentication and real-time updates.</p>
-          <div class="links flex gap-3 mt-2">
-            <a href="https://your-demo-link.com/task-manager" target="_blank" class="nes-btn">Try App</a>
-            <a href="https://github.com/ramanprasadeth/task-manager" target="_blank" class="nes-btn github">GitHub</a>
-          </div>
-        </div>
-      </div>
-    </div>
+        const pageOrder = ['home', 'resume', 'projects', 'blog'];
 
-    <footer class="text-center mt-6 mb-4 text-gray-400 text-sm">© 2025 raman.engineer | Built with 💻 by Raman</footer>
-  </div>
+        // Navigation handling with slide animation
+        navButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                const pageId = button.getAttribute('data-page');
+                const newPageIndex = pageOrder.indexOf(pageId);
 
-  <script>
-    function showPage(pageId) {
-      document.querySelectorAll('.page').forEach(page => {
-        page.classList.add('hidden');
-        page.classList.remove('active');
-      });
-      document.querySelectorAll('nav button').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      const page = document.getElementById(pageId);
-      const button = document.querySelector(`nav button[onclick="showPage('${pageId}')"]`);
-      if (page) {
-        page.classList.remove('hidden');
-        page.classList.add('active');
-      }
-      if (button) {
-        button.classList.add('active');
-      }
-    }
+                // Remove active class from all buttons and pages
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                pages.forEach(page => page.classList.remove('active'));
 
-    function openModal() {
-      document.getElementById('resumeModal').classList.remove('hidden');
-      document.getElementById('roleInput').focus();
-    }
+                // Add active class to the clicked button
+                button.classList.add('active');
 
-    function closeModal() {
-      document.getElementById('resumeModal').classList.add('hidden');
-    }
+                // Determine slide direction
+                const direction = newPageIndex > currentPageIndex ? 'left' : 'right';
+                currentPageIndex = newPageIndex;
 
-    function downloadResume() {
-      let role = document.getElementById('roleInput').value.trim() || 'Technology Professional';
-      closeModal();
+                // Add slide animation
+                const newPage = document.getElementById(pageId);
+                newPage.style.opacity = '0';
+                newPage.style.transform = direction === 'left' ? 'translateX(20px)' : 'translateX(-20px)';
+                newPage.classList.add('active');
 
-      try {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF({
-          orientation: 'portrait',
-          unit: 'mm',
-          format: 'a4'
+                setTimeout(() => {
+                    newPage.style.opacity = '1';
+                    newPage.style.transform = 'translateX(0)';
+                }, 10);
+
+                // Scroll to top on page change
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
 
-        const margin = 20;
-        let y = margin;
+        // Scroll handling for navbar and theme toggle transparency
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        doc.setFont("helvetica", "bold");
-        doc.setFontSize(18);
-        doc.setTextColor(255, 255, 255);
-        doc.text("Raman Prasad", margin, y);
-        y += 8;
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(10);
-        doc.text("Upper Hutt, Wellington, New Zealand", margin, y);
-        y += 6;
-        doc.text("Phone: +64 0210348290 | Email: ramanprasad.eth@gmail.com", margin, y);
-        y += 10;
+            if (scrollTop > lastScrollTop && scrollTop > 50) {
+                // Scrolling down
+                navbar.classList.add('transparent');
+                themeToggle.classList.add('transparent');
+            } else {
+                // Scrolling up or at the top
+                navbar.classList.remove('transparent');
+                themeToggle.classList.remove('transparent');
+            }
 
-        doc.setFont("helvetica", "bold");
-        doc.setFontSize(14);
-        doc.setTextColor(10, 132, 255);
-        doc.text(`Resume for ${role}`, margin, y);
-        y += 8;
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(10);
-        doc.setTextColor(255, 255, 255);
-        doc.text("Versatile computer science student skilled in software engineering and data analysis.", margin, y);
-        y += 6;
-        doc.text("Explore my work at raman.engineer", margin, y);
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
 
-        doc.save(`Raman_Prasad_${role.replace(/\s+/g, '_')}.pdf`);
-      } catch (error) {
-        alert('Error generating resume. Please try again.');
-        console.error(error);
-      }
-    }
+        // Theme toggle handling
+        themeButton.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode');
+            
+            // Update icon based on theme
+            const icon = themeButton.querySelector('i');
+            icon.setAttribute('data-lucide', isDarkMode ? 'moon' : 'sun');
+            lucide.createIcons();
+        });
 
-    // Close modal with Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !document.getElementById('resumeModal').classList.contains('hidden')) {
-        closeModal();
-      }
-    });
-
-    // Add click animation to buttons
-    document.querySelectorAll('.nes-btn, nav button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-          btn.style.transform = 'scale(1)';
-        }, 100);
-      });
-    });
-  </script>
+        // Add touch feedback for buttons
+        document.querySelectorAll('button, .social-links a').forEach(btn => {
+            btn.addEventListener('touchstart', () => {
+                btn.style.opacity = '0.8';
+            });
+            btn.addEventListener('touchend', () => {
+                btn.style.opacity = '1';
+            });
+        });
+    </script>
 </body>
 </html>
