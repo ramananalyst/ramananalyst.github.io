@@ -234,9 +234,7 @@
         .social-links a:active {
             transform: scale(0.98);
         }
-        .social-links a.github { background: rgba(36, 41, 46, 0.9); color: #ffffff; }
         .social-links a.linkedin { background: rgba(0, 119, 181, 0.9); color: #ffffff; }
-        .social-links a.twitter { background: rgba(29, 161, 242, 0.9); color: #ffffff; }
         .social-links a.email-gmail { background: rgba(220, 53, 69, 0.9); color: #ffffff; }
         .social-links a.email-apple { background: rgba(100, 100, 100, 0.9); color: #ffffff; }
         .social-links i {
@@ -399,36 +397,6 @@
         body.dark-mode .cv-section h2 {
             color: #e5e5e5;
         }
-        .cv-section a {
-            padding: 12px 28px;
-            background: #007aff;
-            color: #ffffff;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
-            text-decoration: none;
-        }
-        .cv-section a:hover {
-            background: #005bd4;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
-        }
-        .cv-section a:active {
-            transform: scale(0.98);
-        }
-        .cv-section a i {
-            width: 16px;
-            height: 16px;
-            stroke: #ffffff;
-            stroke-width: 2;
-        }
         .profile-img {
             width: 112px;
             height: 112px;
@@ -507,10 +475,6 @@
             }
             .cv-section h2 {
                 font-size: 18px;
-            }
-            .cv-section a {
-                padding: 10px 24px;
-                font-size: 14px;
             }
             .profile-img {
                 width: 90px;
@@ -591,17 +555,9 @@
                 Passionate about understanding customer behavior and delivering insights to drive meaningful improvements. Experienced in qualitative research, customer journey mapping, and stakeholder collaboration, with a commitment to enhancing customer experiences at MBIE.
             </div>
             <div class="social-links">
-                <a href="https://github.com/ramanprasadeth" class="github">
-                    <i data-lucide="github"></i>
-                    GitHub
-                </a>
                 <a href="https://linkedin.com/in/ramanprasadeth" class="linkedin">
                     <i data-lucide="linkedin"></i>
                     LinkedIn
-                </a>
-                <a href="https://twitter.com/ramanprasadeth" class="twitter">
-                    <i data-lucide="twitter"></i>
-                    X
                 </a>
                 <a href="mailto:ramanprasad.eth@gmail.com" class="email-gmail">
                     <i data-lucide="mail"></i>
@@ -619,11 +575,7 @@
                 </div>
             </div>
             <div class="cv-section">
-                <h2>Want to explore my customer research experience?</h2>
-                <a href="/assets/raman_prasad_cv.pdf" download="Raman_Prasad_CV.pdf">
-                    Download CV
-                    <i data-lucide="download"></i>
-                </a>
+                <h2>Explore my customer research experience on the Resume page!</h2>
             </div>
         </div>
 
@@ -748,15 +700,18 @@
                 <h2>Recent Posts</h2>
                 <div class="blog-post">
                     <h3>The Power of Customer Journey Mapping</h3>
-                    <p>Exploring how journey maps can uncover customer pain points and drive meaningful service improvements.</p>
+                    <p><em>March 5, 2025</em></p>
+                    <p>Customer journey mapping is a game-changer for understanding user experiences. By visualizing each touchpoint, from initial contact to final outcomes, we uncover pain points and opportunities. In my recent work, mapping journeys for a service provider revealed a critical bottleneck in response times, leading to a 15% improvement in customer satisfaction after targeted changes. This approach ensures we prioritize what matters most to customers.</p>
                 </div>
                 <div class="blog-post">
                     <h3>Effective Stakeholder Engagement in Research</h3>
-                    <p>Strategies for building trust and collaboration with diverse stakeholders in customer research.</p>
+                    <p><em>March 3, 2025</em></p>
+                    <p>Building trust with stakeholders is key to impactful research. During a recent project, I facilitated workshops with diverse groups, using active listening to align their needs with research goals. By fostering open dialogue and clear communication, we identified shared priorities that shaped our customer feedback strategy. This collaborative approach not only enriched our insights but also strengthened stakeholder buy-in.</p>
                 </div>
                 <div class="blog-post">
                     <h3>Leveraging Qualitative Data for Impact</h3>
-                    <p>Techniques for analyzing qualitative feedback to inform customer-centric decision-making.</p>
+                    <p><em>March 1, 2025</em></p>
+                    <p>Qualitative data brings customer stories to life. In a recent analysis of interview transcripts, I identified recurring themes around service accessibility that quantitative metrics missed. Using tools like Excel to organize insights, I translated these findings into actionable recommendations, improving service delivery for non-native English speakers. Qualitative research is essential for driving empathetic, customer-centric decisions.</p>
                 </div>
             </div>
         </div>
@@ -828,7 +783,7 @@
             lucide.createIcons();
         });
 
-        document.querySelectorAll('button, .social-links a, .cv-section a').forEach(btn => {
+        document.querySelectorAll('button, .social-links a').forEach(btn => {
             btn.addEventListener('touchstart', () => {
                 btn.style.opacity = '0.8';
             });
