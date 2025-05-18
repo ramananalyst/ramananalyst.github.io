@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Raman Prasad - Customer Research Portfolio</title>
+    <title>Raman Prasad - Data Analyst Portfolio</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         * {
@@ -22,20 +22,12 @@
             padding: 90px 0 24px;
             overscroll-behavior: none;
             -webkit-font-smoothing: antialiased;
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
-        body.dark-mode {
-            background-color: #1a1a1a;
-            color: #e5e5e5;
         }
         .nav-container {
             position: fixed;
             top: 40px;
             left: 50%;
             transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            gap: 12px;
             z-index: 1000;
         }
         .navbar {
@@ -50,20 +42,13 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             width: 340px;
             max-width: 90%;
-            transition: background 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease, width 0.3s ease;
+            transition: background 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, width 0.3s ease;
         }
         .navbar.transparent {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(5px);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             opacity: 0.3;
-        }
-        body.dark-mode .navbar {
-            background: rgba(44, 44, 44, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        body.dark-mode .navbar.transparent {
-            background: rgba(44, 44, 44, 0.05);
         }
         .navbar button {
             background: none;
@@ -86,72 +71,14 @@
             box-shadow: 0 0 15px rgba(163, 207, 255, 0.5);
             animation: fadeHighlight 0.5s ease forwards;
         }
-        body.dark-mode .navbar button.active {
-            background: linear-gradient(135deg, rgba(74, 144, 226, 0.7), rgba(150, 150, 150, 0.7));
-            box-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
-        }
         .navbar button.active i {
             stroke: #1a202c;
-        }
-        body.dark-mode .navbar button.active i {
-            stroke: #ffffff;
         }
         .navbar i {
             width: 24px;
             height: 24px;
             stroke: #1a202c;
             stroke-width: 2;
-            transition: stroke 0.3s ease;
-        }
-        body.dark-mode .navbar i {
-            stroke: #e5e5e5;
-        }
-        .theme-toggle {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            padding: 12px;
-            border-radius: 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: background 0.5s ease, opacity 0.5s ease;
-        }
-        .theme-toggle.transparent {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            opacity: 0.3;
-        }
-        body.dark-mode .theme-toggle {
-            background: rgba(44, 44, 44, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        body.dark-mode .theme-toggle.transparent {
-            background: rgba(44, 44, 44, 0.05);
-        }
-        .theme-toggle button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 50%;
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
-        .theme-toggle button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-        .theme-toggle button:active {
-            transform: scale(0.95);
-        }
-        .theme-toggle i {
-            width: 24px;
-            height: 24px;
-            stroke: #1a202c;
-            stroke-width: 2;
-            transition: stroke 0.3s ease;
-        }
-        body.dark-mode .theme-toggle i {
-            stroke: #e5e5e5;
         }
         .container {
             max-width: 1000px;
@@ -181,9 +108,6 @@
         .greeting span {
             font-size: 26px;
         }
-        body.dark-mode .greeting {
-            color: #e5e5e5;
-        }
         .description {
             font-size: 16px;
             color: #6b7280;
@@ -191,9 +115,6 @@
             line-height: 1.8;
             max-width: 700px;
             animation: fadeIn 1s ease forwards;
-        }
-        body.dark-mode .description {
-            color: #a0a0a0;
         }
         .social-links {
             display: flex;
@@ -219,17 +140,10 @@
             align-items: center;
             gap: 8px;
         }
-        body.dark-mode .social-links a {
-            background: rgba(255, 255, 255, 0.05);
-            color: #e5e5e5;
-        }
         .social-links a:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-3px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        body.dark-mode .social-links a:hover {
-            background: rgba(255, 255, 255, 0.1);
         }
         .social-links a:active {
             transform: scale(0.98);
@@ -262,17 +176,10 @@
             transition: all 0.3s ease;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
-        body.dark-mode .buttons button {
-            background: rgba(255, 255, 255, 0.05);
-            color: #e5e5e5;
-        }
         .buttons button:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-3px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        body.dark-mode .buttons button:hover {
-            background: rgba(255, 255, 255, 0.1);
         }
         .buttons button:active {
             transform: scale(0.98);
@@ -296,12 +203,6 @@
             color: #1a202c;
             animation: fadeIn 0.8s ease forwards;
         }
-        body.dark-mode .notes-section h2,
-        body.dark-mode .resume-section h2,
-        body.dark-mode .projects-section h2,
-        body.dark-mode .blog-section h2 {
-            color: #e5e5e5;
-        }
         .note, .resume-entry, .project, .blog-post {
             padding: 20px;
             border-radius: 16px;
@@ -309,48 +210,25 @@
             backdrop-filter: blur(10px);
             font-size: 16px;
             color: #1a202c;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
             margin-bottom: 16px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             animation: fadeIn 1s ease forwards;
-        }
-        body.dark-mode .note,
-        body.dark-mode .resume-entry,
-        body.dark-mode .project,
-        body.dark-mode .blog-post {
-            background: rgba(255, 255, 255, 0.05);
-            color: #e5e5e5;
         }
         .note:hover, .resume-entry:hover, .project:hover, .blog-post:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             background: rgba(255, 255, 255, 0.15);
         }
-        body.dark-mode .note:hover,
-        body.dark-mode .resume-entry:hover,
-        body.dark-mode .project:hover,
-        body.dark-mode .blog-post:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
         .resume-entry h3, .project h3, .blog-post h3 {
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 8px;
         }
-        body.dark-mode .resume-entry h3,
-        body.dark-mode .project h3,
-        body.dark-mode .blog-post h3 {
-            color: #e5e5e5;
-        }
         .resume-entry p, .project p, .blog-post p {
             color: #6b7280;
             font-size: 15px;
             line-height: 1.6;
-        }
-        body.dark-mode .resume-entry p,
-        body.dark-mode .project p,
-        body.dark-mode .blog-post p {
-            color: #a0a0a0;
         }
         .resume-entry ul, .project ul {
             list-style-type: disc;
@@ -362,10 +240,6 @@
             font-size: 15px;
             line-height: 1.6;
         }
-        body.dark-mode .resume-entry ul li,
-        body.dark-mode .project ul li {
-            color: #a0a0a0;
-        }
         .cv-section {
             display: flex;
             justify-content: space-between;
@@ -374,28 +248,19 @@
             border-radius: 16px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             animation: fadeIn 1s ease forwards;
-        }
-        body.dark-mode .cv-section {
-            background: rgba(255, 255, 255, 0.05);
         }
         .cv-section:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             background: rgba(255, 255, 255, 0.15);
         }
-        body.dark-mode .cv-section:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
         .cv-section h2 {
             font-size: 20px;
             font-weight: 600;
             color: #1a202c;
-        }
-        body.dark-mode .cv-section h2 {
-            color: #e5e5e5;
         }
         .profile-img {
             width: 112px;
@@ -419,9 +284,6 @@
             font-size: 14px;
             animation: fadeIn 1s ease forwards;
         }
-        body.dark-mode footer {
-            color: #a0a0a0;
-        }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -432,9 +294,6 @@
             100% { background: linear-gradient(135deg, rgba(163, 207, 255, 0.7), rgba(200, 200, 200, 0.7)); box-shadow: 0 0 15px rgba(163, 207, 255, 0.5); }
         }
         @media (max-width: 768px) {
-            .nav-container {
-                gap: 8px;
-            }
             .navbar {
                 width: 300px;
                 padding: 10px 18px;
@@ -493,13 +352,6 @@
                 width: 22px;
                 height: 22px;
             }
-            .theme-toggle {
-                padding: 8px;
-            }
-            .theme-toggle i {
-                width: 22px;
-                height: 22px;
-            }
             .greeting {
                 font-size: 24px;
             }
@@ -535,11 +387,6 @@
                 <i data-lucide="pen-tool"></i>
             </button>
         </div>
-        <div class="theme-toggle" id="theme-toggle">
-            <button id="theme-button">
-                <i data-lucide="sun"></i>
-            </button>
-        </div>
     </div>
 
     <div class="container">
@@ -549,21 +396,21 @@
                 <div class="greeting">
                     Hi, I’m Raman Prasad <span>👋</span>
                 </div>
-                <p class="text-sm text-gray-600 dark:text-gray-400">Customer Research Analyst | Data Enthusiast | Community Advocate</p>
+                <p class="text-sm text-gray-600">Data Analyst | SQL & Python Enthusiast | Insights-Driven Decision Maker</p>
             </div>
             <div class="description">
-                Passionate about understanding customer behavior and delivering insights to drive meaningful improvements. Experienced in qualitative research, customer journey mapping, and stakeholder collaboration, with a commitment to enhancing customer experiences at MBIE.
+                Passionate about transforming data into actionable insights to drive business decisions. Experienced in SQL, Python, Tableau, and stakeholder collaboration, with a focus on delivering high-impact data analysis and visualization solutions.
             </div>
             <div class="social-links">
-                <a href="https://linkedin.com/in/ramanprasad" class="linkedin">
+                <a href="https://linkedin.com/in/ramanprasad" class="linkedin" target="_blank">
                     <i data-lucide="linkedin"></i>
                     LinkedIn
                 </a>
-                <a href="mailto:ramanprasad.eth@gmail.com" class="email-gmail">
+                <a href="mailto:ramanprasad@gmail.com" class="email-gmail">
                     <i data-lucide="mail"></i>
                     Gmail
                 </a>
-                <a href="mailto:ramanprasad.eth@gmail.com" class="email-apple">
+                <a href="mailto:ramanprasad@icloud.com" class="email-apple">
                     <i data-lucide="mail"></i>
                     Apple Mail
                 </a>
@@ -571,11 +418,11 @@
             <div class="notes-section">
                 <h2>Latest Notes</h2>
                 <div class="note">
-                    Dedicated to championing the voice of the customer through empathetic research and actionable insights.
+                    Committed to leveraging data analysis to uncover insights that empower organizations to make informed, impactful decisions.
                 </div>
             </div>
             <div class="cv-section">
-                <h2>Explore my customer research experience on the Resume page!</h2>
+                <h2>Explore my data analysis expertise on the Resume page!</h2>
             </div>
         </div>
 
@@ -584,80 +431,77 @@
                 My Resume
             </div>
             <div class="description">
-                A summary of my professional journey, highlighting my expertise in customer research, qualitative analysis, and stakeholder engagement.
+                A summary of my professional journey, highlighting my expertise in data analysis, SQL, Python, and data visualization.
             </div>
             <div class="resume-section">
                 <h2>Contact Information</h2>
                 <div class="resume-entry">
                     <h3>Raman Prasad</h3>
                     <p>Wellington, New Zealand</p>
-                    <p>Phone: +64 0210348290 | Email: ramanprasad.eth@gmail.com</p>
+                    <p>Phone: +64 0210348290 | Email: <a href="mailto:ramanprasad@gmail.com">ramanprasad@gmail.com</a></p>
                 </div>
                 <h2>Professional Summary</h2>
                 <div class="resume-entry">
-                    <p>Dedicated professional with a robust background in customer service, stakeholder engagement, and qualitative analysis. Experienced in collaborating with diverse teams to deliver customer-centric solutions and drive meaningful improvements. Skilled in conducting research, analyzing customer feedback, and supporting the development of customer journey maps to enhance service delivery.</p>
+                    <p>Detail-oriented data analyst with a strong background in SQL, Python, and Tableau, skilled in extracting actionable insights from complex datasets. Experienced in stakeholder collaboration, data visualization, and process optimization, with a proven track record of driving data-informed decisions in customer-centric environments.</p>
                 </div>
                 <h2>Core Competencies</h2>
                 <div class="resume-entry">
                     <ul>
-                        <li>Customer Research & Journey Mapping</li>
-                        <li>Qualitative Data Analysis</li>
-                        <li>Stakeholder Collaboration & Communication</li>
-                        <li>Participant Recruitment & Fieldwork Coordination</li>
-                        <li>Data Analysis & Reporting (Excel, SQL)</li>
-                        <li>Empathetic Engagement with Diverse Audiences</li>
+                        <li>Data Analysis & Visualization (SQL, Python, Tableau)</li>
+                        <li>Data Cleaning & Transformation</li>
+                        <li>Stakeholder Collaboration & Reporting</li>
+                        <li>Predictive Analytics & Statistical Modeling</li>
+                        <li>Database Management & Query Optimization</li>
+                        <li>Google Sheets Automation & Integration</li>
                     </ul>
                 </div>
                 <h2>Professional Experience</h2>
                 <div class="resume-entry">
-                    <h3>Social Media Leader & Billing Analyst | Octopus Energy</h3>
+                    <h3>Billing Specialist & Social Media Leader | Octopus Energy</h3>
                     <p>2023 – Present | Wellington, New Zealand</p>
                     <ul>
-                        <li>Collaborated with a team of 9 to gather and analyze customer feedback, identifying key insights to improve service delivery for over 25,000 customers.</li>
-                        <li>Supported the design and implementation of customer interaction processes, ensuring alignment with regulatory standards and customer needs.</li>
-                        <li>Coordinated data collection and reporting efforts, maintaining documentation to ensure quality and consistency in customer research activities.</li>
+                        <li>Created Locker studio dashboards to visualize Ops work data (Google sheets to locker studio)</li>
                     </ul>
                 </div>
                 <div class="resume-entry">
-                    <h3>Customer Service | Countdown</h3>
+                    <h3>Customer Service Analyst | Countdown</h3>
                     <p>2019 – 2023 | Wellington, New Zealand</p>
                     <ul>
-                        <li>Managed customer escalations, gathering direct feedback to identify recurring themes and inform service enhancements.</li>
-                        <li>Collaborated with internal teams to streamline operations, ensuring customer feedback was integrated into process improvements.</li>
-                        <li>Supported administrative tasks, including data analysis and reporting, to provide insights for customer-focused decision-making.</li>
+                        <li>Collaborated with teams to integrate data insights into operational improvements, streamlining processes.</li>
+                        <li>Designed reports to communicate findings to management, supporting strategic decision-making.</li>
                     </ul>
                 </div>
                 <div class="resume-entry">
                     <h3>Customer Service Lead | Manos Licensed Restaurant</h3>
                     <p>2015 – 2018 | Wellington, New Zealand</p>
                     <ul>
-                        <li>Engaged directly with customers to understand their needs, implementing strategies to improve customer experience based on feedback.</li>
-                        <li>Built strong relationships with regular customers, fostering trust and ensuring a customer-centric approach.</li>
+                        <li>Collected and analyzed customer feedback to enhance service quality, improving customer retention by 10%.</li>
+                        <li>Implemented data-driven strategies to optimize customer interactions and operational efficiency.</li>
                     </ul>
                 </div>
                 <h2>Education</h2>
                 <div class="resume-entry">
                     <h3>Bachelor of Science in Computer Science and Data Science</h3>
                     <p>Massey University, New Zealand | Expected 2026</p>
-                    <p>Focus: Data analysis, customer behavior trends, and visualization.</p>
+                    <p>Focus: Data analysis, statistical modeling, and visualization.</p>
                 </div>
                 <div class="resume-entry">
                     <h3>Educational Psychology and Criminology</h3>
                     <p>Victoria University of Wellington, New Zealand | 2022-2023</p>
-                    <p>Focus: Behavioral insights and qualitative research methods.</p>
+                    <p>Focus: Behavioral data analysis and research methods.</p>
                 </div>
                 <h2>Technical Skills</h2>
                 <div class="resume-entry">
                     <ul>
-                        <li>Data Analysis Tools: Excel, SQL, Tableau</li>
-                        <li>Customer Engagement Platforms: Social Media, Canva</li>
-                        <li>Web Development: HTML, CSS</li>
-                        <li>Project Management: Google Workspace, Trello</li>
+                        <li>Data Analysis Tools I have newbie experience with: SQL, Python (Pandas, NumPy), Tableau, Excel</li>
+                        <li>Web Development: HTML, CSS, JavaScript</li>
+                        <li>Database Management newbie experience: MySQL, PostgreSQL</li>
+                        <li>Automation: Google Sheets API, Python Scripts</li>
                     </ul>
                 </div>
                 <h2>Why I’m Your Ideal Candidate</h2>
                 <div class="resume-entry">
-                    <p>As a data science and psychology student, I bring a unique blend of technical and empathetic skills tailored for customer research. My experience in gathering and analyzing customer feedback, combined with my ability to collaborate with diverse stakeholders, positions me to excel in MBIE’s Customer Research Team. I am passionate about delivering insights that drive customer-centric improvements and am ready to contribute to your mission.</p>
+                    <p>As a data science student with hands-on experience in SQL, Python, and Tableau, I excel at uncovering insights from complex datasets. My ability to translate data into actionable recommendations, combined with strong stakeholder collaboration skills, makes me a valuable asset for any data analyst role. I am eager to contribute my analytical expertise to drive impactful business outcomes.</p>
                 </div>
             </div>
         </div>
@@ -667,24 +511,32 @@
                 My Projects
             </div>
             <div class="description">
-                A collection of projects showcasing my expertise in customer research, data analysis, and stakeholder collaboration.
+                A collection of projects showcasing my experience with data analysis, SQL, Python, and data visualization for insights.
             </div>
             <div class="projects-section">
                 <h2>Featured Projects</h2>
                 <div class="project">
-                    <h3>Customer Feedback Dashboard</h3>
-                    <p>A tool to analyze customer feedback trends, supporting service improvements for a large customer base.</p>
-                    <p><strong>Languages/Tools:</strong> Python, SQL, Tableau</p>
+                    <h3>SQL Book Viewer</h3>
+                    <p>A web application to browse and query a database of books, demonstrating SQL database management skills.</p>
+                    <p><strong>Languages/Tools:</strong> SQL, HTML, CSS, JavaScript</p>
+                    <p><a href="https://ramansql.pages.dev" target="_blank">View Project</a></p>
                 </div>
                 <div class="project">
-                    <h3>Customer Journey Mapping Tool</h3>
-                    <p>A web-based application to visualize customer journeys, aiding in the identification of pain points.</p>
-                    <p><strong>Languages/Tools:</strong> HTML, CSS, JavaScript</p>
+                    <h3>MP3 Player</h3>
+                    <p>Wanted a simple retro MP3 player.</p>
+                    <p><a href="https://ramanmp3.pages.dev" target="_blank">View Project</a></p>
                 </div>
                 <div class="project">
-                    <h3>Stakeholder Feedback Analyzer</h3>
-                    <p>An interactive tool for synthesizing stakeholder feedback from workshops and interviews.</p>
-                    <p><strong>Languages/Tools:</strong> Python, Excel</p>
+                    <h3>Chrome Data Input & Google Sheets Exporter</h3>
+                    <p>A Chrome extension to collect user input and export data to Google Sheets for streamlined reporting.</p>
+                    <p><strong>Languages/Tools:</strong> JavaScript, Google Sheets API, HTML</p>
+                    <p><a href="https://github.com/ramantools/chrome-sheets" target="_blank">View Project</a></p>
+                </div>
+                <div class="project">
+                    <h3>Ramantools GitHub</h3>
+                    <p>A collection of data analysis tools and scripts for automating data processing and visualization tasks.</p>
+                    <p><strong>Languages/Tools:</strong> Python, SQL, JavaScript</p>
+                    <p><a href="https://ramantools.githib.io" target="_blank">View Project</a></p>
                 </div>
             </div>
         </div>
@@ -694,24 +546,37 @@
                 My Blog
             </div>
             <div class="description">
-                Insights and reflections on customer research, qualitative analysis, and improving customer experiences.
+                My thoughts and lessons learned as a beginner programmer exploring SQL, Python, JavaScript, HTML, and CSS for data analysis.
             </div>
             <div class="blog-section">
                 <h2>Recent Posts</h2>
                 <div class="blog-post">
-                    <h3>The Power of Customer Journey Mapping</h3>
+                    <h3>Learning SQL Was a Game-Changer for Me!</h3>
                     <p><em>March 5, 2025</em></p>
-                    <p>Customer journey mapping is a game-changer for understanding user experiences. By visualizing each touchpoint, from initial contact to final outcomes, we uncover pain points and opportunities. In my recent work, mapping journeys for a service provider revealed a critical bottleneck in response times, leading to a 15% improvement in customer satisfaction after targeted changes. This approach ensures we prioritize what matters most to customers.</p>
+                    <p>Hey there! So, I’m super excited to share my journey with SQL because, honestly, it’s been a total game-changer for me as a beginner programmer. I started learning SQL a few months ago, and at first, I was like, “What are all these tables and queries?” But once I got the hang of it, it felt like I unlocked a superpower for working with data!</p>
+                    <p>When I began, I was working on a small project where I had to organize a bunch of customer feedback data. Think like, names, comments, and ratings from thousands of people. Doing this in Excel was a nightmare—my laptop was so slow! Then my professor introduced me to SQL, and I was amazed at how I could just write a query like <code>SELECT * FROM customers WHERE rating > 4;</code> and boom, I had all the happy customers’ data in seconds.</p>
+                    <p>One thing I struggled with was joins. Like, what’s the difference between LEFT JOIN and INNER JOIN? I kept mixing them up, and my queries gave me weird results. I spent a whole weekend watching YouTube tutorials and practicing with a sample database of books. I wrote queries to find books by certain authors or genres, and it finally clicked! For example, I used <code>SELECT books.title, authors.name FROM books INNER JOIN authors ON books.author_id = authors.id;</code> to match books with their authors. It felt so cool to see the data come together.</p>
+                    <p>For my SQL Book Viewer project, I built a little web app where users can search a database of books. I used SQL to create tables and query them, and I connected it to a simple webpage with HTML and JavaScript. It’s not perfect, but seeing my queries actually work on a real webpage was so rewarding. I learned that SQL is awesome for organizing data, but you have to be careful with your queries to avoid slowing things down. I accidentally wrote a query that took forever because I forgot to filter properly—lesson learned!</p>
+                    <p>If you’re just starting with SQL, my advice is to practice with small datasets and don’t be afraid to mess up. Also, tools like MySQL Workbench or SQLite are great for beginners. SQL is like a puzzle, and once you solve it, you feel like a data wizard. I’m still learning, but I’m so pumped to keep exploring how SQL can help me as a data analyst!</p>
                 </div>
                 <div class="blog-post">
-                    <h3>Effective Stakeholder Engagement in Research</h3>
+                    <h3>Python Is My New Best Friend for Data Analysis</h3>
                     <p><em>March 3, 2025</em></p>
-                    <p>Building trust with stakeholders is key to impactful research. During a recent project, I facilitated workshops with diverse groups, using active listening to align their needs with research goals. By fostering open dialogue and clear communication, we identified shared priorities that shaped our customer feedback strategy. This collaborative approach not only enriched our insights but also strengthened stakeholder buy-in.</p>
+                    <p>Okay, so I have to tell you about Python because it’s honestly become my favorite tool for data analysis. I started learning it last semester, and at first, I was intimidated because coding seemed so complicated. But Python is actually pretty friendly, especially for beginners like me, and it’s made my data projects so much easier.</p>
+                    <p>I began with simple stuff, like printing “Hello, World!” and doing basic math. Then I discovered libraries like Pandas and Matplotlib, and that’s when things got exciting. For example, I was working on my MP3 Player Data Analyzer project, where I wanted to analyze my music listening habits. I had a folder of MP3 files, and I used Python to read their metadata—like song names, artists, and play counts. I used Pandas to put all that data into a table (they call it a DataFrame), and it was so much easier than messing around in Excel.</p>
+                    <p>One thing I learned the hard way was dealing with messy data. Some of my MP3 files had missing tags, and my code kept crashing. I had to figure out how to handle those errors, like using <code>try/except</code> blocks. It took me a few tries, but I got it working, and I even made a chart with Matplotlib to show which artists I listened to the most. Seeing that bar chart pop up on my screen was like, “Whoa, I made this!”</p>
+                    <p>I also used Python for my Data Cleaning Script project. I had a dataset with customer feedback, but it had duplicates and some empty rows. Writing a Python script to clean it up was so satisfying. I used Pandas commands like <code>drop_duplicates()</code> and <code>dropna()</code>, and suddenly my data was neat and ready for analysis. I even wrote a little script to export the cleaned data to a CSV file, which I could then use in Tableau or SQL.</p>
+                    <p>My biggest tip for beginners is to start small and play around with Python in a Jupyter Notebook. It’s awesome because you can run your code line by line and see what happens. Also, don’t be scared of errors—they’re just part of learning. Python has so many possibilities for data analysis, and I’m excited to keep learning more, maybe even try some machine learning next!</p>
                 </div>
                 <div class="blog-post">
-                    <h3>Leveraging Qualitative Data for Impact</h3>
+                    <h3>Building My First Web App with HTML, CSS, and JavaScript</h3>
                     <p><em>March 1, 2025</em></p>
-                    <p>Qualitative data brings customer stories to life. In a recent analysis of interview transcripts, I identified recurring themes around service accessibility that quantitative metrics missed. Using tools like Excel to organize insights, I translated these findings into actionable recommendations, improving service delivery for non-native English speakers. Qualitative research is essential for driving empathetic, customer-centric decisions.</p>
+                    <p>Hi everyone! I want to share my experience building my first web app because it was such a fun (and sometimes frustrating) journey. I’m new to HTML, CSS, and JavaScript, but I decided to dive in and create something for my portfolio. Spoiler alert: it’s not as scary as it sounds, and I learned a ton!</p>
+                    <p>I started with my SQL Book Viewer project, where I wanted to make a webpage that lets people search a database of books. HTML was the first thing I tackled, and it’s like the skeleton of a webpage. I learned to create elements like <code>&lt;div&gt;</code> and <code>&lt;input&gt;</code> to build a search bar and a table for results. At first, my page looked super plain, and I was like, “This is not cool.” That’s where CSS came in.</p>
+                    <p>CSS was so much fun because it’s like decorating your webpage. I played around with colors, fonts, and layouts to make my app look nice. I used <code>display: flex;</code> to arrange my search bar and results side by side, but I kept breaking the layout by accident. I spent hours tweaking margins and padding, and I learned that CSS can be picky! One tiny mistake, like forgetting a semicolon, and everything looks weird.</p>
+                    <p>JavaScript was the hardest part because it makes the webpage interactive. I wanted users to type a book title and see results from my SQL database. I used JavaScript to send the search term to a backend (I used a simple server with Node.js, which I’m still learning). At first, my search button did nothing, and I was so confused. I found out I forgot to add an event listener, so I added <code>button.addEventListener('click', searchBooks);</code>, and it finally worked! Seeing the book titles pop up on the page was such a victory.</p>
+                    <p>I also worked on my Chrome Data Input & Google Sheets Exporter project, which uses JavaScript to grab data from a webpage and send it to Google Sheets. Learning about APIs was mind-blowing—I had no idea you could connect a webpage to Google Sheets like that. I struggled with the API authentication part, but following a tutorial helped me get it working.</p>
+                    <p>My advice for beginners is to start with a simple webpage, like a personal portfolio, and experiment with HTML and CSS first. Then add JavaScript to make it interactive. Free resources like W3Schools and MDN Web Docs were lifesavers for me. Building a web app is like putting together a puzzle, and even if it’s not perfect, you’ll learn so much. I’m already planning my next web project, maybe something with more animations!</p>
                 </div>
             </div>
         </div>
@@ -725,11 +590,8 @@
         const navButtons = document.querySelectorAll('.navbar button');
         const pages = document.querySelectorAll('.page');
         const navbar = document.getElementById('navbar');
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeButton = document.getElementById('theme-button');
         let currentPageIndex = 0;
         let lastScrollTop = 0;
-        let isDarkMode = false;
 
         const pageOrder = ['home', 'resume', 'projects', 'blog'];
 
@@ -765,22 +627,11 @@
 
             if (scrollTop > lastScrollTop && scrollTop > 50) {
                 navbar.classList.add('transparent');
-                themeToggle.classList.add('transparent');
             } else {
                 navbar.classList.remove('transparent');
-                themeToggle.classList.remove('transparent');
             }
 
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        });
-
-        themeButton.addEventListener('click', () => {
-            isDarkMode = !isDarkMode;
-            document.body.classList.toggle('dark-mode');
-            
-            const icon = themeButton.querySelector('i');
-            icon.setAttribute('data-lucide', isDarkMode ? 'moon' : 'sun');
-            lucide.createIcons();
         });
 
         document.querySelectorAll('button, .social-links a').forEach(btn => {
