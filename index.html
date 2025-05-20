@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Raman Prasad - Data Analyst Portfolio</title>
+    <title>Raman Prasad - Software Developer</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         * {
@@ -15,7 +15,7 @@
             -webkit-tap-highlight-color: transparent;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Courier New', sans-serif;
             background-color: #f5f9fc;
             color: #1a202c;
             line-height: 1.6;
@@ -104,6 +104,9 @@
             align-items: center;
             gap: 12px;
             animation: fadeIn 0.8s ease forwards;
+            background: linear-gradient(90deg, #00aaff, #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .greeting span {
             font-size: 26px;
@@ -294,80 +297,28 @@
             100% { background: linear-gradient(135deg, rgba(163, 207, 255, 0.7), rgba(200, 200, 200, 0.7)); box-shadow: 0 0 15px rgba(163, 207, 255, 0.5); }
         }
         @media (max-width: 768px) {
-            .navbar {
-                width: 300px;
-                padding: 10px 18px;
-            }
-            .container {
-                padding: 16px;
-            }
-            .greeting {
-                font-size: 28px;
-            }
-            .greeting span {
-                font-size: 22px;
-            }
-            .description {
-                font-size: 15px;
-                max-width: 100%;
-            }
-            .social-links, .buttons {
-                flex-direction: column;
-                gap: 12px;
-            }
-            .social-links a, .buttons button {
-                padding: 12px 24px;
-                font-size: 14px;
-            }
-            .notes-section h2, .resume-section h2, .projects-section h2, .blog-section h2 {
-                font-size: 20px;
-            }
-            .note, .resume-entry, .project, .blog-post {
-                font-size: 15px;
-                padding: 16px;
-            }
-            .cv-section {
-                flex-direction: column;
-                gap: 16px;
-                text-align: center;
-                padding: 16px;
-            }
-            .cv-section h2 {
-                font-size: 18px;
-            }
-            .profile-img {
-                width: 90px;
-                height: 90px;
-            }
+            .navbar { width: 300px; padding: 10px 18px; }
+            .container { padding: 16px; }
+            .greeting { font-size: 28px; }
+            .greeting span { font-size: 22px; }
+            .description { font-size: 15px; max-width: 100%; }
+            .social-links, .buttons { flex-direction: column; gap: 12px; }
+            .social-links a, .buttons button { padding: 12px 24px; font-size: 14px; }
+            .notes-section h2, .resume-section h2, .projects-section h2, .blog-section h2 { font-size: 20px; }
+            .note, .resume-entry, .project, .blog-post { font-size: 15px; padding: 16px; }
+            .cv-section { flex-direction: column; gap: 16px; text-align: center; padding: 16px; }
+            .cv-section h2 { font-size: 18px; }
+            .profile-img { width: 90px; height: 90px; }
         }
         @media (max-width: 480px) {
-            .navbar {
-                width: 260px;
-                padding: 8px 16px;
-            }
-            .navbar button {
-                padding: 8px;
-            }
-            .navbar i {
-                width: 22px;
-                height: 22px;
-            }
-            .greeting {
-                font-size: 24px;
-            }
-            .greeting span {
-                font-size: 20px;
-            }
-            .description {
-                font-size: 14px;
-            }
-            .social-links a, .buttons button {
-                padding: 10px 20px;
-                font-size: 13px;
-            }
-            .cv-section h2 {
-                font-size: 16px;
-            }
+            .navbar { width: 260px; padding: 8px 16px; }
+            .navbar button { padding: 8px; }
+            .navbar i { width: 22px; height: 22px; }
+            .greeting { font-size: 24px; }
+            .greeting span { font-size: 20px; }
+            .description { font-size: 14px; }
+            .social-links a, .buttons button { padding: 10px 20px; font-size: 13px; }
+            .cv-section h2 { font-size: 16px; }
         }
     </style>
 </head>
@@ -394,12 +345,12 @@
             <div class="profile text-center mb-5">
                 <img src="https://i.postimg.cc/yx7ZNbPd/1-CF46048-E1-DD-453-E-92-BC-621257-C74524-1-105-c.jpg" alt="Raman's Profile Picture" class="profile-img mx-auto">
                 <div class="greeting">
-                    Hi, I’m Raman Prasad <span>👋</span>
+                    Hey, I’m Raman Prasad <span>👋</span>
                 </div>
-                <p class="text-sm text-gray-600">Data Analyst | SQL & Python Enthusiast | Insights-Driven Decision Maker</p>
+                <p class="text-sm text-gray-600">C++ | JavaScript | Software Developer</p>
             </div>
             <div class="description">
-                Passionate about transforming data into actionable insights to drive business decisions. Experienced in SQL, Python, Tableau, and stakeholder collaboration, with a focus on delivering high-impact data analysis and visualization solutions.
+                I love building fast programs with C++ and making fun, interactive websites with JavaScript. I’m all about solving problems and helping businesses run better.
             </div>
             <div class="social-links">
                 <a href="https://linkedin.com/in/ramanprasad" class="linkedin" target="_blank">
@@ -416,13 +367,13 @@
                 </a>
             </div>
             <div class="notes-section">
-                <h2>Latest Notes</h2>
+                <h2>Quick Note</h2>
                 <div class="note">
-                    Committed to leveraging data analysis to uncover insights that empower organizations to make informed, impactful decisions.
+                    I’m excited to use C++ and JavaScript to create tools and websites that make work easier and more fun!
                 </div>
             </div>
             <div class="cv-section">
-                <h2>Explore my data analysis expertise on the Resume page!</h2>
+                <h2>Check out my C++ and JavaScript skills on the Resume page!</h2>
             </div>
         </div>
 
@@ -431,77 +382,89 @@
                 My Resume
             </div>
             <div class="description">
-                A summary of my professional journey, highlighting my expertise in data analysis, SQL, Python, and data visualization.
+                Here’s my work and skills, focusing on C++ and JavaScript, with a little bit of SQL and Python for basic tasks.
             </div>
             <div class="resume-section">
-                <h2>Contact Information</h2>
+                <h2>Contact Info</h2>
                 <div class="resume-entry">
                     <h3>Raman Prasad</h3>
                     <p>Wellington, New Zealand</p>
                     <p>Phone: +64 0210348290 | Email: <a href="mailto:ramanprasad@gmail.com">ramanprasad@gmail.com</a></p>
                 </div>
-                <h2>Professional Summary</h2>
-                <div class="resume-entry">
-                    <p>Detail-oriented data analyst with a strong background in SQL, Python, and Tableau, skilled in extracting actionable insights from complex datasets. Experienced in stakeholder collaboration, data visualization, and process optimization, with a proven track record of driving data-informed decisions in customer-centric environments.</p>
-                </div>
-                <h2>Core Competencies</h2>
-                <div class="resume-entry">
-                    <ul>
-                        <li>Data Analysis & Visualization (SQL, Python, Tableau)</li>
-                        <li>Data Cleaning & Transformation</li>
-                        <li>Stakeholder Collaboration & Reporting</li>
-                        <li>Predictive Analytics & Statistical Modeling</li>
-                        <li>Database Management & Query Optimization</li>
-                        <li>Google Sheets Automation & Integration</li>
-                    </ul>
-                </div>
                 <h2>Professional Experience</h2>
                 <div class="resume-entry">
-                    <h3>Billing Specialist & Social Media Leader | Octopus Energy</h3>
-                    <p>2023 – Present | Wellington, New Zealand</p>
+                    <h3>Social Media Leader / Specialist in Billing and Affordability Management</h3>
+                    <p>Octopus Energy, Wellington, New Zealand</p>
+                    <p>2023 – Present</p>
                     <ul>
-                        <li>Created Locker studio dashboards to visualize Ops work data (Google sheets to locker studio)</li>
+                        <li>Created Locker Studio dashboards to visualize Ops work data (Google Sheets to Locker Studio)</li>
+                        <li>Done billing master and worked on several billing projects</li>
+                        <li>Built JavaScript tools to boost social media engagement</li>
+                        <li>Used C++ to create programs for processing billing data</li>
                     </ul>
                 </div>
                 <div class="resume-entry">
-                    <h3>Customer Service Analyst | Countdown</h3>
-                    <p>2019 – 2023 | Wellington, New Zealand</p>
+                    <h3>Customer Service</h3>
+                    <p>Countdown, Wellington, New Zealand</p>
+                    <p>2019 – 2023</p>
                     <ul>
-                        <li>Collaborated with teams to integrate data insights into operational improvements, streamlining processes.</li>
-                        <li>Designed reports to communicate findings to management, supporting strategic decision-making.</li>
+                        <li>Managed customer escalations, gathering direct feedback to identify recurring themes and inform service enhancements</li>
+                        <li>Collaborated with internal teams to streamline operations, ensuring customer feedback was integrated into process improvements</li>
+                        <li>Supported administrative tasks, including data analysis and reporting, to provide insights for customer-focused decision-making</li>
+                        <li>Developed JavaScript scripts to improve internal web tools</li>
                     </ul>
                 </div>
                 <div class="resume-entry">
-                    <h3>Customer Service Lead | Manos Licensed Restaurant</h3>
-                    <p>2015 – 2018 | Wellington, New Zealand</p>
+                    <h3>Customer Service Lead</h3>
+                    <p>Manos Licensed Restaurant, Wellington, New Zealand</p>
+                    <p>2015 – 2018</p>
                     <ul>
-                        <li>Collected and analyzed customer feedback to enhance service quality, improving customer retention by 10%.</li>
-                        <li>Implemented data-driven strategies to optimize customer interactions and operational efficiency.</li>
+                        <li>Oversaw customer service operations, engaging directly with customers to understand their needs and preferences</li>
+                        <li>Implemented strategies to improve customer experience based on feedback, contributing to operational efficiency</li>
+                        <li>Built strong relationships with regular customers, fostering trust and ensuring a customer-centric approach</li>
+                        <li>Created simple C++ tools to organize customer feedback data</li>
                     </ul>
                 </div>
                 <h2>Education</h2>
                 <div class="resume-entry">
-                    <h3>Bachelor of Science in Computer Science and Data Science</h3>
-                    <p>Massey University, New Zealand | Expected 2026</p>
-                    <p>Focus: Data analysis, statistical modeling, and visualization.</p>
+                    <h3>Bachelor of Science in Computer Science and Data Science (Conjoint)</h3>
+                    <p>Massey University</p>
+                    <p>Expected Graduation: 2026</p>
+                    <p>Learning C++ programming, JavaScript web development, and some data skills</p>
                 </div>
                 <div class="resume-entry">
                     <h3>Educational Psychology and Criminology</h3>
-                    <p>Victoria University of Wellington, New Zealand | 2022-2023</p>
-                    <p>Focus: Behavioral data analysis and research methods.</p>
+                    <p>Victoria University of Wellington</p>
+                    <p>2022 – 2023</p>
+                    <p>Studied how people behave and basic data analysis</p>
                 </div>
-                <h2>Technical Skills</h2>
+                <h2>Achievements</h2>
                 <div class="resume-entry">
                     <ul>
-                        <li>Data Analysis Tools I have newbie experience with: SQL, Python (Pandas, NumPy), Tableau, Excel</li>
-                        <li>Web Development: HTML, CSS, JavaScript</li>
-                        <li>Database Management newbie experience: MySQL, PostgreSQL</li>
-                        <li>Automation: Google Sheets API, Python Scripts</li>
+                        <li>Successfully identified customer insights that led to process improvements, reducing resolution times and enhancing customer satisfaction</li>
+                        <li>Recognized for empathetic and effective communication with diverse customer groups, fostering trust and collaboration</li>
+                        <li>Contributed to team efforts that exceeded performance targets by integrating customer feedback into operational strategies</li>
                     </ul>
                 </div>
-                <h2>Why I’m Your Ideal Candidate</h2>
+                <h2>Technical Proficiency</h2>
                 <div class="resume-entry">
-                    <p>As a data science student with hands-on experience in SQL, Python, and Tableau, I excel at uncovering insights from complex datasets. My ability to translate data into actionable recommendations, combined with strong stakeholder collaboration skills, makes me a valuable asset for any data analyst role. I am eager to contribute my analytical expertise to drive impactful business outcomes.</p>
+                    <ul>
+                        <li>Microsoft Office Suite (Word, Excel, PowerPoint, Outlook)</li>
+                        <li>Data Analysis and Visualization Tools (basic SQL, basic Python)</li>
+                        <li>Web Development and CSS Styling</li>
+                        <li>C++ and JavaScript</li>
+                        <li>Chrome Extension Development</li>
+                    </ul>
+                </div>
+                <h2>Additional Information</h2>
+                <div class="resume-entry">
+                    <ul>
+                        <li>New Zealand Citizen</li>
+                        <li>Full, Clean NZ Driver License</li>
+                        <li>Strong understanding of customer research methodologies and operational compliance</li>
+                        <li>Commitment to maintaining high-quality documentation and research standards</li>
+                        <li>Experience managing community support and social media channels to enhance customer engagement</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -511,32 +474,33 @@
                 My Projects
             </div>
             <div class="description">
-                A collection of projects showcasing my experience with data analysis, SQL, Python, and data visualization for insights.
+                Here are some cool things I’ve built with C++ and JavaScript, plus one simple SQL project.
             </div>
             <div class="projects-section">
                 <h2>Featured Projects</h2>
                 <div class="project">
                     <h3>SQL Book Viewer</h3>
-                    <p>A web application to browse and query a database of books, demonstrating SQL database management skills.</p>
-                    <p><strong>Languages/Tools:</strong> SQL, HTML, CSS, JavaScript</p>
+                    <p>A web app to search a book database using simple SQL queries, with a JavaScript front-end.</p>
+                    <p><strong>Tools:</strong> SQL, JavaScript, HTML, CSS</p>
                     <p><a href="https://ramansql.pages.dev" target="_blank">View Project</a></p>
                 </div>
                 <div class="project">
                     <h3>MP3 Player</h3>
-                    <p>Wanted a simple retro MP3 player.</p>
+                    <p>A retro-style MP3 player built with JavaScript to play music smoothly.</p>
+                    <p><strong>Tools:</strong> JavaScript, HTML, CSS</p>
                     <p><a href="https://ramanmp3.pages.dev" target="_blank">View Project</a></p>
                 </div>
                 <div class="project">
                     <h3>Chrome Data Input & Google Sheets Exporter</h3>
-                    <p>A Chrome extension to collect user input and export data to Google Sheets for streamlined reporting.</p>
-                    <p><strong>Languages/Tools:</strong> JavaScript, Google Sheets API, HTML</p>
-                    <p><a href="https://github.com/ramantools/chrome-sheets" target="_blank">View Project</a></p>
+                    <p>A Chrome extension to collect data and send it to Google Sheets, using JavaScript.</p>
+                    <p><strong>Tools:</strong> JavaScript, Google Sheets API, HTML</p>
+                    <p><a href="https://chromewebstore.google.com/detail/jarvisnzb/hhllohafhbcbcmebphcahoehgdhpgdpf?hl=en-GB&authuser=0" target="_blank">View Project</a></p>
                 </div>
                 <div class="project">
                     <h3>Ramantools GitHub</h3>
-                    <p>A collection of data analysis tools and scripts for automating data processing and visualization tasks.</p>
-                    <p><strong>Languages/Tools:</strong> Python, SQL, JavaScript</p>
-                    <p><a href="https://ramantools.githib.io" target="_blank">View Project</a></p>
+                    <p>A collection of tools, mostly in C++ and JavaScript, for automating tasks.</p>
+                    <p><strong>Tools:</strong> C++, JavaScript, basic Python, basic SQL</p>
+                    <p><a href="https://ramantools.github.io" target="_blank">View Project</a></p>
                 </div>
             </div>
         </div>
@@ -546,37 +510,31 @@
                 My Blog
             </div>
             <div class="description">
-                My thoughts and lessons learned as a beginner programmer exploring SQL, Python, JavaScript, HTML, and CSS for data analysis.
+                My thoughts on learning C++ and JavaScript, with just a little about SQL, written like I’m chatting with you.
             </div>
             <div class="blog-section">
                 <h2>Recent Posts</h2>
                 <div class="blog-post">
-                    <h3>Learning SQL Was a Game-Changer for Me!</h3>
+                    <h3>C++ Makes My Work Super Fast</h3>
                     <p><em>March 5, 2025</em></p>
-                    <p>Hey there! So, I’m super excited to share my journey with SQL because, honestly, it’s been a total game-changer for me as a beginner programmer. I started learning SQL a few months ago, and at first, I was like, “What are all these tables and queries?” But once I got the hang of it, it felt like I unlocked a superpower for working with data!</p>
-                    <p>When I began, I was working on a small project where I had to organize a bunch of customer feedback data. Think like, names, comments, and ratings from thousands of people. Doing this in Excel was a nightmare—my laptop was so slow! Then my professor introduced me to SQL, and I was amazed at how I could just write a query like <code>SELECT * FROM customers WHERE rating > 4;</code> and boom, I had all the happy customers’ data in seconds.</p>
-                    <p>One thing I struggled with was joins. Like, what’s the difference between LEFT JOIN and INNER JOIN? I kept mixing them up, and my queries gave me weird results. I spent a whole weekend watching YouTube tutorials and practicing with a sample database of books. I wrote queries to find books by certain authors or genres, and it finally clicked! For example, I used <code>SELECT books.title, authors.name FROM books INNER JOIN authors ON books.author_id = authors.id;</code> to match books with their authors. It felt so cool to see the data come together.</p>
-                    <p>For my SQL Book Viewer project, I built a little web app where users can search a database of books. I used SQL to create tables and query them, and I connected it to a simple webpage with HTML and JavaScript. It’s not perfect, but seeing my queries actually work on a real webpage was so rewarding. I learned that SQL is awesome for organizing data, but you have to be careful with your queries to avoid slowing things down. I accidentally wrote a query that took forever because I forgot to filter properly—lesson learned!</p>
-                    <p>If you’re just starting with SQL, my advice is to practice with small datasets and don’t be afraid to mess up. Also, tools like MySQL Workbench or SQLite are great for beginners. SQL is like a puzzle, and once you solve it, you feel like a data wizard. I’m still learning, but I’m so pumped to keep exploring how SQL can help me as a data analyst!</p>
+                    <p>Hey! I love C++ because it makes programs run crazy fast. It was tough at first—stuff like memory was confusing. But now, it’s like building super-speedy tools!</p>
+                    <p>For my Ramantools GitHub, I made a C++ program to process data quickly. It helped with billing tasks at Octopus Energy. I had some bugs that crashed it, but fixing them was so satisfying.</p>
+                    <p>C++ is awesome for making things efficient. If you’re new, try a simple program, like sorting numbers. Use Visual Studio—it’s great. I’m still learning, but C++ is a game-changer!</p>
                 </div>
                 <div class="blog-post">
-                    <h3>Python Is My New Best Friend for Data Analysis</h3>
+                    <h3>JavaScript Brings Websites to Life</h3>
                     <p><em>March 3, 2025</em></p>
-                    <p>Okay, so I have to tell you about Python because it’s honestly become my favorite tool for data analysis. I started learning it last semester, and at first, I was intimidated because coding seemed so complicated. But Python is actually pretty friendly, especially for beginners like me, and it’s made my data projects so much easier.</p>
-                    <p>I began with simple stuff, like printing “Hello, World!” and doing basic math. Then I discovered libraries like Pandas and Matplotlib, and that’s when things got exciting. For example, I was working on my MP3 Player Data Analyzer project, where I wanted to analyze my music listening habits. I had a folder of MP3 files, and I used Python to read their metadata—like song names, artists, and play counts. I used Pandas to put all that data into a table (they call it a DataFrame), and it was so much easier than messing around in Excel.</p>
-                    <p>One thing I learned the hard way was dealing with messy data. Some of my MP3 files had missing tags, and my code kept crashing. I had to figure out how to handle those errors, like using <code>try/except</code> blocks. It took me a few tries, but I got it working, and I even made a chart with Matplotlib to show which artists I listened to the most. Seeing that bar chart pop up on my screen was like, “Whoa, I made this!”</p>
-                    <p>I also used Python for my Data Cleaning Script project. I had a dataset with customer feedback, but it had duplicates and some empty rows. Writing a Python script to clean it up was so satisfying. I used Pandas commands like <code>drop_duplicates()</code> and <code>dropna()</code>, and suddenly my data was neat and ready for analysis. I even wrote a little script to export the cleaned data to a CSV file, which I could then use in Tableau or SQL.</p>
-                    <p>My biggest tip for beginners is to start small and play around with Python in a Jupyter Notebook. It’s awesome because you can run your code line by line and see what happens. Also, don’t be scared of errors—they’re just part of learning. Python has so many possibilities for data analysis, and I’m excited to keep learning more, maybe even try some machine learning next!</p>
+                    <p>Yo, JavaScript is my go-to for making websites fun! I was nervous about web coding, but it’s easier than I thought.</p>
+                    <p>My Chrome Data Input & Google Sheets Exporter is a Chrome extension that grabs data and sends it to Google Sheets. JavaScript made it super interactive. It was tricky to connect to Google, but a tutorial helped me out.</p>
+                    <p>I also built an MP3 Player with JavaScript. It’s a retro music player that works smoothly. Getting the buttons to work took some trial and error, but seeing it play music was awesome!</p>
+                    <p>For beginners, start with a simple webpage, like a music player. Use VS Code and check the browser’s tools to fix mistakes. JavaScript is so cool, and I want to build more!</p>
                 </div>
                 <div class="blog-post">
-                    <h3>Building My First Web App with HTML, CSS, and JavaScript</h3>
+                    <h3>A Little Bit of SQL</h3>
                     <p><em>March 1, 2025</em></p>
-                    <p>Hi everyone! I want to share my experience building my first web app because it was such a fun (and sometimes frustrating) journey. I’m new to HTML, CSS, and JavaScript, but I decided to dive in and create something for my portfolio. Spoiler alert: it’s not as scary as it sounds, and I learned a ton!</p>
-                    <p>I started with my SQL Book Viewer project, where I wanted to make a webpage that lets people search a database of books. HTML was the first thing I tackled, and it’s like the skeleton of a webpage. I learned to create elements like <code>&lt;div&gt;</code> and <code>&lt;input&gt;</code> to build a search bar and a table for results. At first, my page looked super plain, and I was like, “This is not cool.” That’s where CSS came in.</p>
-                    <p>CSS was so much fun because it’s like decorating your webpage. I played around with colors, fonts, and layouts to make my app look nice. I used <code>display: flex;</code> to arrange my search bar and results side by side, but I kept breaking the layout by accident. I spent hours tweaking margins and padding, and I learned that CSS can be picky! One tiny mistake, like forgetting a semicolon, and everything looks weird.</p>
-                    <p>JavaScript was the hardest part because it makes the webpage interactive. I wanted users to type a book title and see results from my SQL database. I used JavaScript to send the search term to a backend (I used a simple server with Node.js, which I’m still learning). At first, my search button did nothing, and I was so confused. I found out I forgot to add an event listener, so I added <code>button.addEventListener('click', searchBooks);</code>, and it finally worked! Seeing the book titles pop up on the page was such a victory.</p>
-                    <p>I also worked on my Chrome Data Input & Google Sheets Exporter project, which uses JavaScript to grab data from a webpage and send it to Google Sheets. Learning about APIs was mind-blowing—I had no idea you could connect a webpage to Google Sheets like that. I struggled with the API authentication part, but following a tutorial helped me get it working.</p>
-                    <p>My advice for beginners is to start with a simple webpage, like a personal portfolio, and experiment with HTML and CSS first. Then add JavaScript to make it interactive. Free resources like W3Schools and MDN Web Docs were lifesavers for me. Building a web app is like putting together a puzzle, and even if it’s not perfect, you’ll learn so much. I’m already planning my next web project, maybe something with more animations!</p>
+                    <p>Hey there! I’ve just started with SQL, and it’s okay for simple data stuff. I’m way more into C++ and JavaScript, but SQL is useful sometimes.</p>
+                    <p>My SQL Book Viewer is a web app where you can search for books. I used basic SQL commands to find book titles and linked it to a webpage with JavaScript. I messed up some queries at first, but practicing helped.</p>
+                    <p>SQL is good for quick data searches, but I prefer C++ for heavy tasks. My tip: try SQL with a small database and use MySQL Workbench. It’s not my main thing, but it’s nice to know a bit!</p>
                 </div>
             </div>
         </div>
