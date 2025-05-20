@@ -15,9 +15,9 @@
             -webkit-tap-highlight-color: transparent;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Courier New', sans-serif;
-            background-color: #f5f9fc;
-            color: #1a202c;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8fafc;
+            color: #111827;
             line-height: 1.6;
             padding: 90px 0 24px;
             overscroll-behavior: none;
@@ -34,21 +34,21 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(15px);
             padding: 12px 20px;
             border-radius: 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             width: 340px;
             max-width: 90%;
-            transition: background 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+            transition: all 0.3s ease;
         }
         .navbar.transparent {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(5px);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            opacity: 0.3;
+            opacity: 0.9;
         }
         .navbar button {
             background: none;
@@ -57,27 +57,27 @@
             padding: 10px;
             border-radius: 12px;
             position: relative;
-            transition: background 0.3s ease, transform 0.3s ease;
+            transition: all 0.3s ease;
         }
         .navbar button:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
             transform: scale(1.1);
         }
         .navbar button:active {
             transform: scale(0.95);
         }
         .navbar button.active {
-            background: linear-gradient(135deg, rgba(163, 207, 255, 0.7), rgba(200, 200, 200, 0.7));
-            box-shadow: 0 0 15px rgba(163, 207, 255, 0.5);
+            background: linear-gradient(135deg, #2563eb, #14b8a6);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
             animation: fadeHighlight 0.5s ease forwards;
         }
         .navbar button.active i {
-            stroke: #1a202c;
+            stroke: #ffffff;
         }
         .navbar i {
             width: 24px;
             height: 24px;
-            stroke: #1a202c;
+            stroke: #111827;
             stroke-width: 2;
         }
         .container {
@@ -104,7 +104,7 @@
             align-items: center;
             gap: 12px;
             animation: fadeIn 0.8s ease forwards;
-            background: linear-gradient(90deg, #00aaff, #ffaa00);
+            background: linear-gradient(90deg, #2563eb, #14b8a6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -113,8 +113,8 @@
         }
         .description {
             font-size: 16px;
-            color: #6b7280;
-            margin-bottom: 24 нашего margin-bottom: 24px;
+            color: #4b5563;
+            margin-bottom: 24px;
             line-height: 1.8;
             max-width: 700px;
             animation: fadeIn 1s ease forwards;
@@ -130,12 +130,12 @@
             padding: 12px 28px;
             border: none;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             cursor: pointer;
             font-size: 15px;
             font-weight: 500;
-            color: #1a202c;
+            color: #111827;
             transition: all 0.3s ease;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             text-decoration: none;
@@ -144,16 +144,16 @@
             gap: 8px;
         }
         .social-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-3px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         .social-links a:active {
             transform: scale(0.98);
         }
-        .social-links a.linkedin { background: rgba(0, 119, 181, 0.9); color: #ffffff; }
-        .social-links a.email-gmail { background: rgba(220, 53, 69, 0.9); color: #ffffff; }
-        .social-links a.email-apple { background: rgba(100, 100, 100, 0.9); color: #ffffff; }
+        .social-links a.linkedin { background: #0a66c2; color: #ffffff; }
+        .social-links a.email-gmail { background: #d32f2f; color: #ffffff; }
+        .social-links a.email-apple { background: #374151; color: #ffffff; }
         .social-links i {
             width: 16px;
             height: 16px;
@@ -170,17 +170,17 @@
             padding: 12px 28px;
             border: none;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             cursor: pointer;
             font-size: 15px;
             font-weight: 500;
-            color: #1a202c;
+            color: #111827;
             transition: all 0.3s ease;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         .buttons button:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-3px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
@@ -188,12 +188,12 @@
             transform: scale(0.98);
         }
         .buttons .active {
-            background: #34c759;
+            background: #14b8a6;
             color: #ffffff;
-            box-shadow: 0 2px 8px rgba(52, 199, 89, 0.3);
+            box-shadow: 0 2px 8px rgba(20, 184, 166, 0.3);
         }
         .buttons .active:hover {
-            background: #2eb350;
+            background: #0d9488;
             transform: translateY(-3px);
         }
         .notes-section, .resume-section, .projects-section, .blog-section {
@@ -203,17 +203,17 @@
             font-size: 22px;
             font-weight: 600;
             margin-bottom: 16px;
-            color: #1a202c;
+            color: #111827;
             animation: fadeIn 0.8s ease forwards;
         }
         .note, .resume-entry, .project, .blog-post {
             padding: 20px;
             border-radius: 16px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             font-size: 16px;
-            color: #1a202c;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            color: #111827;
+            transition: all 0.3s ease;
             margin-bottom: 16px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             animation: fadeIn 1s ease forwards;
@@ -221,7 +221,7 @@
         .note:hover, .resume-entry:hover, .project:hover, .blog-post:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
         }
         .resume-entry h3, .project h3, .blog-post h3 {
             font-size: 18px;
@@ -229,7 +229,7 @@
             margin-bottom: 8px;
         }
         .resume-entry p, .project p, .blog-post p {
-            color: #6b7280;
+            color: #4b5563;
             font-size: 15px;
             line-height: 1.6;
         }
@@ -239,7 +239,7 @@
             margin-top: 8px;
         }
         .resume-entry ul li, .project ul li {
-            color: #6b7280;
+            color: #4b5563;
             font-size: 15px;
             line-height: 1.6;
         }
@@ -249,41 +249,41 @@
             align-items: center;
             padding: 20px;
             border-radius: 16px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            transition: all 0.3s ease;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             animation: fadeIn 1s ease forwards;
         }
         .cv-section:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
         }
         .cv-section h2 {
             font-size: 20px;
             font-weight: 600;
-            color: #1a202c;
+            color: #111827;
         }
         .profile-img {
             width: 112px;
             height: 112px;
             border-radius: 50%;
-            border: 2px solid #0a84ff;
+            border: 2px solid #2563eb;
             object-fit: cover;
             margin-bottom: 12px;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            transition: all 0.5s ease;
             animation: fadeIn 0.8s ease forwards;
         }
         .profile-img:hover {
             transform: scale(1.15);
-            box-shadow: 0 0 20px rgba(10, 132, 255, 0.5);
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
         }
         footer {
             text-align: center;
             margin-top: 24px;
             margin-bottom: 16px;
-            color: #6b7280;
+            color: #4b5563;
             font-size: 14px;
             animation: fadeIn 1s ease forwards;
         }
@@ -292,9 +292,9 @@
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeHighlight {
-            0% { background: rgba(255, 255, 255, 0.2); box-shadow: 0 0 5px rgba(163, 207, 255, 0.2); }
-            50% { background: linear-gradient(135deg, rgba(163, 207, 255, 0.9), rgba(200, 200, 200, 0.9)); box-shadow: 0 0 20px rgba(163, 207, 255, 0.7); }
-            100% { background: linear-gradient(135deg, rgba(163, 207, 255, 0.7), rgba(200, 200, 200, 0.7)); box-shadow: 0 0 15px rgba(163, 207, 255, 0.5); }
+            0% { background: rgba(255, 255, 255, 0.25); box-shadow: 0 0 5px rgba(37, 99, 235, 0.2); }
+            50% { background: linear-gradient(135deg, #2563eb, #14b8a6); box-shadow: 0 0 20px rgba(37, 99, 235, 0.5); }
+            100% { background: linear-gradient(135deg, #2563eb, #14b8a6); box-shadow: 0 0 15px rgba(37, 99, 235, 0.3); }
         }
         @media (max-width: 768px) {
             .navbar { width: 300px; padding: 10px 18px; }
@@ -324,18 +324,18 @@
 </head>
 <body>
     <div class="nav-container">
-        <div class="navbar" id="navbar">
-            <button title="Home" data-page="home" class="active">
-                <i data-lucide="home"></i>
+        <div class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+            <button title="Home" data-page="home" class="active" aria-label="Home page">
+                <i data-lucide="home" aria-hidden="true"></i>
             </button>
-            <button title="Resume" data-page="resume">
-                <i data-lucide="file-text"></i>
+            <button title="Resume" data-page="resume" aria-label="Resume page">
+                <i data-lucide="file-text" aria-hidden="true"></i>
             </button>
-            <button title="Projects" data-page="projects">
-                <i data-lucide="briefcase"></i>
+            <button title="Projects" data-page="projects" aria-label="Projects page">
+                <i data-lucide="briefcase" aria-hidden="true"></i>
             </button>
-            <button title="Blog" data-page="blog">
-                <i data-lucide="pen-tool"></i>
+            <button title="Blog" data-page="blog" aria-label="Blog page">
+                <i data-lucide="pen-tool" aria-hidden="true"></i>
             </button>
         </div>
     </div>
@@ -350,30 +350,30 @@
                 <p class="text-sm text-gray-600">C++ | JavaScript | Software Developer</p>
             </div>
             <div class="description">
-                I love building fast programs with C++ and making fun, interactive websites with JavaScript. I’m all about solving problems and helping businesses run better.
+                I love building fast programs with C++ and creating engaging, interactive websites with JavaScript. My passion lies in solving complex problems and helping businesses operate more efficiently.
             </div>
             <div class="social-links">
-                <a href="https://linkedin.com/in/ramanprasad" class="linkedin" target="_blank">
-                    <i data-lucide="linkedin"></i>
+                <a href="https://linkedin.com/in/ramanprasad" class="linkedin" target="_blank" aria-label="LinkedIn Profile">
+                    <i data-lucide="linkedin" aria-hidden="true"></i>
                     LinkedIn
                 </a>
-                <a href="mailto:ramanprasad@gmail.com" class="email-gmail">
-                    <i data-lucide="mail"></i>
+                <a href="mailto:ramanprasad@example.com" class="email-gmail" aria-label="Email via Gmail">
+                    <i data-lucide="mail" aria-hidden="true"></i>
                     Gmail
                 </a>
-                <a href="mailto:ramanprasad@icloud.com" class="email-apple">
-                    <i data-lucide="mail"></i>
+                <a href="mailto:ramanprasad@icloud.com" class="email-apple" aria-label="Email via Apple Mail">
+                    <i data-lucide="mail" aria-hidden="true"></i>
                     Apple Mail
                 </a>
             </div>
             <div class="notes-section">
                 <h2>Quick Note</h2>
                 <div class="note">
-                    I’m excited to use C++ and JavaScript to create tools and websites that make work easier and more fun!
+                    I’m excited to leverage C++ and JavaScript to craft tools and websites that streamline work and spark joy!
                 </div>
             </div>
             <div class="cv-section">
-                <h2>Check out my C++ and JavaScript skills on the Resume page!</h2>
+                <h2>Explore my C++ and JavaScript expertise on the Resume page!</h2>
             </div>
         </div>
 
@@ -382,14 +382,14 @@
                 My Resume
             </div>
             <div class="description">
-                Here’s my work and skills, focusing on C++ and JavaScript, with a little bit of SQL and Python for basic tasks.
+                A showcase of my professional journey and skills, with a focus on C++ and JavaScript, complemented by foundational SQL and Python expertise.
             </div>
             <div class="resume-section">
                 <h2>Contact Info</h2>
                 <div class="resume-entry">
                     <h3>Raman Prasad</h3>
                     <p>Wellington, New Zealand</p>
-                    <p>Phone: +64 0210348290 | Email: <a href="mailto:ramanprasad@gmail.com">ramanprasad@gmail.com</a></p>
+                    <p>Phone: +64 0210348290 | Email: <a href="mailto:ramanprasad@example.com">ramanprasad@example.com</a></p>
                 </div>
                 <h2>Professional Experience</h2>
                 <div class="resume-entry">
@@ -397,9 +397,9 @@
                     <p>Octopus Energy, Wellington, New Zealand</p>
                     <p>2023 – Present</p>
                     <ul>
-                        <li>Created Locker Studio dashboards to visualize Ops work data (Google Sheets to Locker Studio)</li>
-                        <li>Done billing master and worked on several billing projects</li>
-                        <li>Built JavaScript tools like email snippet generator.</li>
+                        <li>Developed Looker Studio dashboards to visualize operational data (Google Sheets to Looker Studio).</li>
+                        <li>Led billing initiatives and contributed to multiple billing projects.</li>
+                        <li>Built JavaScript tools, including an email snippet generator.</li>
                     </ul>
                 </div>
                 <div class="resume-entry">
@@ -407,9 +407,9 @@
                     <p>Countdown, Wellington, New Zealand</p>
                     <p>2019 – 2023</p>
                     <ul>
-                        <li>Managed customer escalations, gathering direct feedback to identify recurring themes and inform service enhancements</li>
-                        <li>Collaborated with internal teams to streamline operations, ensuring customer feedback was integrated into process improvements</li>
-                        <li>Supported administrative tasks, including data analysis and reporting, to provide insights for customer-focused decision-making</li>
+                        <li>Managed customer escalations, gathering feedback to identify trends and drive service improvements.</li>
+                        <li>Collaborated with teams to streamline operations, integrating customer feedback into processes.</li>
+                        <li>Supported administrative tasks, including data analysis and reporting for customer-focused decisions.</li>
                     </ul>
                 </div>
                 <div class="resume-entry">
@@ -417,10 +417,10 @@
                     <p>Manos Licensed Restaurant, Wellington, New Zealand</p>
                     <p>2015 – 2018</p>
                     <ul>
-                        <li>Oversaw customer service operations, engaging directly with customers to understand their needs and preferences</li>
-                        <li>Implemented strategies to improve customer experience based on feedback, contributing to operational efficiency</li>
-                        <li>Built strong relationships with regular customers, fostering trust and ensuring a customer-centric approach</li>
-                        <li>Created simple C++ tools to organize customer feedback data</li>
+                        <li>Oversaw customer service operations, engaging directly with customers to understand their needs.</li>
+                        <li>Implemented feedback-driven strategies to enhance customer experience and operational efficiency.</li>
+                        <li>Built strong relationships with regular customers, fostering trust and loyalty.</li>
+                        <li>Developed simple C++ tools to organize customer feedback data.</li>
                     </ul>
                 </div>
                 <h2>Education</h2>
@@ -428,29 +428,29 @@
                     <h3>Bachelor of Science in Computer Science and Data Science (Conjoint)</h3>
                     <p>Massey University</p>
                     <p>Expected Graduation: 2026</p>
-                    <p>Learning C++ programming, JavaScript web development, and some data skills</p>
+                    <p>Studying C++ programming, JavaScript web development, and data analysis techniques.</p>
                 </div>
                 <div class="resume-entry">
                     <h3>Educational Psychology and Criminology</h3>
                     <p>Victoria University of Wellington</p>
                     <p>2022 – 2023</p>
-                    <p>Studied how people behave and basic data analysis</p>
+                    <p>Explored human behavior and foundational data analysis.</p>
                 </div>
                 <h2>Achievements</h2>
                 <div class="resume-entry">
                     <ul>
-                        <li>Successfully identified customer insights that led to process improvements, reducing resolution times and enhancing customer satisfaction</li>
-                        <li>Recognized for empathetic and effective communication with diverse customer groups, fostering trust and collaboration</li>
-                        <li>Contributed to team efforts that exceeded performance targets by integrating customer feedback into operational strategies</li>
+                        <li>Identified customer insights that reduced resolution times and boosted satisfaction.</li>
+                        <li>Recognized for empathetic and effective communication with diverse customer groups.</li>
+                        <li>Contributed to team efforts that exceeded performance targets through feedback integration.</li>
                     </ul>
                 </div>
                 <h2>Technical Proficiency</h2>
                 <div class="resume-entry">
                     <ul>
                         <li>Microsoft Office Suite (Word, Excel, PowerPoint, Outlook)</li>
-                        <li>Data Analysis and Visualization Tools (basic SQL, basic Python)</li>
-                        <li>Web Development and CSS Styling</li>
-                        <li>C++ and JavaScript</li>
+                        <li>Data Analysis and Visualization Tools (SQL, Python)</li>
+                        <li>Web Development (HTML, CSS, JavaScript)</li>
+                        <li>C++ Programming</li>
                         <li>Chrome Extension Development</li>
                     </ul>
                 </div>
@@ -459,9 +459,9 @@
                     <ul>
                         <li>New Zealand Citizen</li>
                         <li>Full, Clean NZ Driver License</li>
-                        <li>Strong understanding of customer research methodologies and operational compliance</li>
-                        <li>Commitment to maintaining high-quality documentation and research standards</li>
-                        <li>Experience managing community support and social media channels to enhance customer engagement</li>
+                        <li>Proficient in customer research methodologies and operational compliance.</li>
+                        <li>Committed to high-quality documentation and research standards.</li>
+                        <li>Experienced in managing community support and social media channels.</li>
                     </ul>
                 </div>
             </div>
@@ -472,27 +472,39 @@
                 My Projects
             </div>
             <div class="description">
-                Here are some cool things I’ve built with C++ and JavaScript, plus one simple SQL project.
+                A collection of exciting projects built with C++ and JavaScript, plus a touch of SQL.
             </div>
             <div class="projects-section">
                 <h2>Featured Projects</h2>
                 <div class="project">
                     <h3>MP3 Player</h3>
-                    <p>A retro-style MP3 player built with JavaScript to play music smoothly.</p>
+                    <p>A retro-style MP3 player built with JavaScript for seamless music playback.</p>
                     <p><strong>Tools:</strong> JavaScript, HTML, CSS</p>
                     <p><a href="https://ramanmp3.pages.dev" target="_blank">View Project</a></p>
                 </div>
                 <div class="project">
                     <h3>Chrome Data Input & Google Sheets Exporter</h3>
-                    <p>A Chrome extension to collect data and send it to Google Sheets, using JavaScript.</p>
+                    <p>A Chrome extension for collecting data and exporting to Google Sheets using JavaScript.</p>
                     <p><strong>Tools:</strong> JavaScript, Google Sheets API, HTML</p>
                     <p><a href="https://chromewebstore.google.com/detail/jarvisnzb/hhllohafhbcbcmebphcahoehgdhpgdpf?hl=en-GB&authuser=0" target="_blank">View Project</a></p>
                 </div>
                 <div class="project">
                     <h3>Ramantools GitHub</h3>
-                    <p>A collection of tools, mostly in C++ and JavaScript, for automating tasks.</p>
-                    <p><strong>Tools:</strong> C++, JavaScript, basic Python, basic SQL</p>
+                    <p>A suite of automation tools primarily built with C++ and JavaScript.</p>
+                    <p><strong>Tools:</strong> C++, JavaScript, Python, SQL</p>
                     <p><a href="https://ramantools.github.io" target="_blank">View Project</a></p>
+                </div>
+                <div class="project">
+                    <h3>IWantASite.com</h3>
+                    <p>A platform for creating customizable websites with user-friendly JavaScript interfaces.</p>
+                    <p><strong>Tools:</strong> JavaScript, HTML, CSS, Node.js</p>
+                    <p><a href="https://iwantasite.com" target="_blank">View Project</a></p>
+                </div>
+                <div class="project">
+                    <h3>MarvelMoviesInOrder.com</h3>
+                    <p>A guide to watching Marvel movies in chronological order, built with JavaScript for dynamic content.</p>
+                    <p><strong>Tools:</strong> JavaScript, HTML, CSS</p>
+                    <p><a href="https://marvelmoviesinorder.com" target="_blank">View Project</a></p>
                 </div>
             </div>
         </div>
@@ -502,7 +514,7 @@
                 My Blog
             </div>
             <div class="description">
-                My thoughts on learning C++ and JavaScript, with just a little about SQL, written like I’m chatting with you.
+                Reflections on mastering C++ and JavaScript, with occasional insights into SQL, written in a conversational style.
             </div>
             <div class="blog-section">
                 <h2>Recent Posts</h2>
@@ -517,7 +529,6 @@
                     <p>C++ templates are super neat. They let me reuse code for different stuff in Ramantools. It was hard to learn, but examples made it clear. I made a sorting tool with less code. If you’re starting, try a simple template for numbers. Visual Studio helps a lot. C++ is tough but fun!</p>
                 </div>
                 <div class="blog-post">
-                    <h部分 class="blog-post">
                     <h3>JavaScript Events Are Cool</h3>
                     <p><em>March 20, 2025</em></p>
                     <p>JavaScript events make websites fun. I added buttons to my MP3 Player to play or pause music. The <code>addEventListener</code> thing is easy. I had some button issues, but a blog helped. My Chrome extension uses events too. Try making a button show a message. VS Code’s live server is great. JavaScript rocks!</p>
